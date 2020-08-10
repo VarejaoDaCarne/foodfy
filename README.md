@@ -24,7 +24,7 @@
 </p>
 
 <h1 align="center">
-    <img alt="Home Page" src="./.github/screenshots/banner.jpg" />
+    <img alt="Home Page" src="/.github/screenshots/banner.jpg" />
 </h1>
 
 <h4 align="center"> 
