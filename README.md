@@ -52,8 +52,45 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ## 🎨 Layout
 
-* Editing Meetup
+* Página sobre o Foodfy
 
+![About](screenshots/about.png)
+
+* Listing Meetups
+
+![Insomnia](screenshots/listMeetup-werb.png)
+
+* Profile Frontend
+
+![Insomnia](screenshots/profile-web.png)
+
+* SignIn Web
+
+![Insomnia](screenshots/sign-web.png)
+
+* SignUp Web
+
+![Insomnia](screenshots/signup-web.png)
+
+* Inscrições Mobile
+
+![Insomnia](screenshots/inscricoes-mobile.png)
+
+* Meetups Mobile
+
+![Insomnia](screenshots/meetups-mobile.png)
+
+* SignIn Mobile
+
+![Insomnia](screenshots/sign-mobile.png)
+
+* SignUp Mobile
+
+![Insomnia](screenshots/signup-mobile.png)
+
+* Infinite Scroll Mobile
+
+![Insomnia](screenshots/sroll-mobile.png)
 
 ---
 
