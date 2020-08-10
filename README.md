@@ -1,6 +1,6 @@
 
 <h1 align="center" >
-    <img alt="Logo Englishflix" src="./src/assets/img/Logo-Github.png" />
+    <img alt="Logo Foodfy" src="./src/assets/img/Logo-Github.png" />
 </h1>
 
 <h3 align="center">
@@ -83,7 +83,7 @@ $ git clone https://github.com/grioos/foodfy
 $ cd foodfy
 
 # Instale as dependências
-$ npm install
+$ npm i
 
 # Execute a aplicação 
 $ npm start
@@ -138,6 +138,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ## 📝 Licença
 
-Este projeto esta sobe a licença [MIT](./LICENSE.md).
+Este projeto esta sobe a licença [MIT](./LICENSE).
 
 Feito por Gabriel Rios 👋🏻 [Entre em contato!](https://www.linkedin.com/in/grioos/)
