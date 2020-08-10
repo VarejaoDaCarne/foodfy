@@ -33,6 +33,7 @@
 
 <p align="center">
   <a href="#-sobre-o-projeto">Sobre</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
   <a href="#-layout">Layout</a> • 
   <a href="#-como-executar-o-projeto">Como executar</a> • 
   <a href="#-tecnologias">Tecnologias</a> • 
@@ -49,6 +50,28 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ---
 
+## ⚙️ Funcionalidades
+
+- [x] Professores podem se cadastrar na plataforma web enviando:
+  - [x] uma imagem do professor
+  - [x] nome, bio e whatsapp
+  - [x] e o horário e dia para dar sua aula 
+  - [x] além de selecionar a matéria e o custo da sua hora/aula. Entre as matérias de escolha estão: 
+    - Artes
+    - Biologia
+    - Ciências
+    - Educação física
+    - Geografia
+    - História
+    - Matemática
+    - Português
+    - Química
+
+- [x] Os alunos tem acesso ao aplicativo, onde podem:
+  - [x] navegar pelo app para ver os professores cadastrados
+  - [x] entrar em contato com o professor através do WhatsApp
+
+---
 
 ## 🎨 Layout
 
