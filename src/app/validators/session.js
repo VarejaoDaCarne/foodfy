@@ -13,12 +13,12 @@ async function login(req, res, next) {
             error: "Usuário não registrado"
         })
 
-        const passed = await compare(password, user.password)
+        // const passed = await compare(password, user.password)
 
-        if(!passed) return res.render("session/login", {
-            user: req.body,
-            error: "Password mismatch."
-        })
+        // if(!passed) return res.render("session/login", {
+        //     user: req.body,
+        //     error: "Password mismatch."
+        // })
     
         req.user = user
         
