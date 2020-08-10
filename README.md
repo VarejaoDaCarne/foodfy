@@ -52,45 +52,61 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ## 🎨 Layout
 
-* Página sobre o Foodfy
+* Sobre o Foodfy
 
 ![About](/.github/screenshots/about.png)
 
-* Listing Meetups
+* Editar chef
 
 ![Admin edit chef](/.github/screenshots/admin-chef-edit.png)
 
-* Profile Frontend
+* Criar usuário
 
 ![Admin create user](/.github/screenshots/admin-create-user.png)
 
-* SignIn Web
+* Editar receita
 
 ![Admin edit recipe](/.github/screenshots/admin-edit-recipe.png)
 
-* SignUp Web
+* Editar usuário
 
 ![Admin edit user](/.github/screenshots/admin-edit-user.png)
 
-* Inscrições Mobile
+* Chef detalhes
 
 ![Admin show chef](/.github/screenshots/admin-show-chef.png)
 
-* Meetups Mobile
+* Listagem usuários
 
 ![Admin users](/.github/screenshots/admin-users.png)
 
-* SignIn Mobile
+* Listagem chefs
 
 ![Guest show chefs](/.github/screenshots/chefs-guest.png)
 
-* SignUp Mobile
+* Recuperar senha
 
 ![Forget password](/.github/screenshots/forget-password.png)
 
-* Infinite Scroll Mobile
+* Logar
 
 ![Login](/.github/screenshots/login.png)
+
+* Atualizar senha
+
+![Password update](/.github/screenshots/password-update.png)
+
+* Receita detalhes
+
+![Recipes guest](/.github/screenshots/recipes-guest.png)
+
+* Receita modal
+
+![Recipes modal](/.github/screenshots/recipes-modal.png)
+
+* Receitas listagem
+
+![Recipes show guest](/.github/screenshots/recipes-show-guest.png)
 
 ---
 
