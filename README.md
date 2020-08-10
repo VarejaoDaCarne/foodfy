@@ -52,29 +52,25 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ## 🎨 Layout
 
-* Sobre o Foodfy
+* Criar chef
 
-![About](/.github/screenshots/about.png)
+![Admin create recipe](/.github/screenshots/admin-create-chef.png)
 
 * Editar chef
 
 ![Admin edit chef](/.github/screenshots/admin-chef-edit.png)
 
-* Criar chef
-
-![Admin create recipe](/.github/screenshots/admin-create-chef.png)
-
 * Criar receita
 
 ![Admin create recipe](/.github/screenshots/admin-create-recipe.png)
 
-* Criar usuário
-
-![Admin create user](/.github/screenshots/admin-create-user.png)
-
 * Editar receita
 
 ![Admin edit recipe](/.github/screenshots/admin-edit-recipe.png)
+
+* Criar usuário
+
+![Admin create user](/.github/screenshots/admin-create-user.png)
 
 * Editar usuário
 
