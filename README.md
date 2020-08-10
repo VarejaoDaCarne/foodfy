@@ -60,6 +60,14 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ![Admin edit chef](/.github/screenshots/admin-chef-edit.png)
 
+* Criar chef
+
+![Admin create recipe](/.github/screenshots/admin-create-chef.png)
+
+* Criar receita
+
+![Admin create recipe](/.github/screenshots/admin-create-recipe.png)
+
 * Criar usuário
 
 ![Admin create user](/.github/screenshots/admin-create-user.png)
@@ -96,7 +104,11 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ![Password update](/.github/screenshots/password-update.png)
 
-* Receita detalhes
+* Receitas filtro
+
+![Recipe filter](/.github/screenshots/recipes-filter.png)
+
+* Receitas listagem
 
 ![Recipes guest](/.github/screenshots/recipes-guest.png)
 
@@ -104,7 +116,7 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ![Recipes modal](/.github/screenshots/recipes-modal.jpg)
 
-* Receitas listagem
+* Receita detalhes
 
 ![Recipes show guest](/.github/screenshots/recipes-show-guest.png)
 
