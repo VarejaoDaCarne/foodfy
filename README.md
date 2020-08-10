@@ -58,39 +58,39 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 * Listing Meetups
 
-![Insomnia](screenshots/listMeetup-werb.png)
+![Admin edit chef](/.github/screenshots/admin-chef-edit.png)
 
 * Profile Frontend
 
-![Insomnia](screenshots/profile-web.png)
+![Admin create user](/.github/screenshots/admin-create-user.png)
 
 * SignIn Web
 
-![Insomnia](screenshots/sign-web.png)
+![Admin edit recipe](/.github/screenshots/admin-edit-recipe.png)
 
 * SignUp Web
 
-![Insomnia](screenshots/signup-web.png)
+![Admin edit user](/.github/screenshots/admin-edit-user.png)
 
 * Inscrições Mobile
 
-![Insomnia](screenshots/inscricoes-mobile.png)
+![Admin show chef](/.github/screenshots/admin-show-chef.png)
 
 * Meetups Mobile
 
-![Insomnia](screenshots/meetups-mobile.png)
+![Admin users](/.github/screenshots/admin-users.png)
 
 * SignIn Mobile
 
-![Insomnia](screenshots/sign-mobile.png)
+![Guest show chefs](/.github/screenshots/chefs-guest.png)
 
 * SignUp Mobile
 
-![Insomnia](screenshots/signup-mobile.png)
+![Forget password](/.github/screenshots/forget-password.png)
 
 * Infinite Scroll Mobile
 
-![Insomnia](screenshots/sroll-mobile.png)
+![Login](/.github/screenshots/login.png)
 
 ---
 
