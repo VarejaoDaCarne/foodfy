@@ -1,6 +1,6 @@
 
 <h1 align="center" >
-    <img alt="Logo Foodfy" src="./src/assets/img/Logo-Github.png" />
+    <img alt="Logo Foodfy" src="https://raw.githubusercontent.com/Rocketseat/bootcamp-launchbase-desafios-02/master/layouts/assets/logo.png" />
 </h1>
 
 <h3 align="center">
@@ -24,7 +24,7 @@
 </p>
 
 <h1 align="center">
-    <img alt="Home Page" src="./src/assets/img/home.jpg" />
+    <img alt="Home Page" src="./.github/screenshots/banner.jpg" />
 </h1>
 
 <h4 align="center"> 
@@ -52,17 +52,8 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ## 🎨 Layout
 
-### Cadastro de vídeo 
+* Editing Meetup
 
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  	<img alt="Página de cadastro de vídeo" src="./src/assets/img/video.png" width="100%">
-</p>
-
-### Cadastro de categoria
-
-<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-	<img alt="Página de cadastro de categoria" src="./src/assets/img/category.png" width="100%">
-</p>
 
 ---
 
