@@ -54,7 +54,7 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 * Página sobre o Foodfy
 
-![About](/.github/screenshots/banner.png)
+![About](/.github/screenshots/about.png)
 
 * Listing Meetups
 
