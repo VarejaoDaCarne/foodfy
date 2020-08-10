@@ -102,7 +102,7 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 * Receita modal
 
-![Recipes modal](/.github/screenshots/recipes-modal.png)
+![Recipes modal](/.github/screenshots/recipes-modal.jpg)
 
 * Receitas listagem
 
