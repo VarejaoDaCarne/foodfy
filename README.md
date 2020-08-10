@@ -56,7 +56,7 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ---
 
-## 🎨 Layout
+## 🎨 Screenshots
 
 * Criar chef
 
