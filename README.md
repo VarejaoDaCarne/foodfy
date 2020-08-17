@@ -52,7 +52,7 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ## ⚙️ Funcionalidades
 
-
+🚧  Em construção...  🚧
 
 ---
 
@@ -140,18 +140,18 @@ $ npm start
 
 As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Bcryptjs](https://github.com/kelektiv/node.bcrypt.js/)**
--   **[Connect pg simple](https://github.com/voxpelli/node-connect-pg-simple)**
+-   **[Connect Pg Simple](https://github.com/voxpelli/node-connect-pg-simple)**
 -   **[Express](https://expressjs.com/)**
--   **[Express session](https://github.com/expressjs/session)**
--   **[Method override](https://www.npmjs.com/package/method-override)**
+-   **[Express Session](https://github.com/expressjs/session)**
+-   **[Method Override](https://www.npmjs.com/package/method-override)**
 -   **[Multer](https://www.npmjs.com/package/multer)**
 -   **[Nodemailer](https://github.com/nodemailer/nodemailer)**
 -   **[NodeJS](https://nodejs.org/en/)**
--   **[Node postgres](https://github.com/brianc/node-postgres)**
+-   **[Node Postgres](https://github.com/brianc/node-postgres)**
 -   **[Nunjucks](https://github.com/mozilla/nunjucks)**
 -   **[JavaScript](https://www.javascript.com/)**
 -   **[Nodemon](https://www.npmjs.com/package/nodemon)**
--   **[Npm run all](https://www.npmjs.com/package/npm-run-all)**
+-   **[Npm Run All](https://www.npmjs.com/package/npm-run-all)**
 
 > Veja o arquivo  [package.json](https://github.com/grioos/foodfy/blob/master/package.json)
 
