@@ -43,7 +43,7 @@ CREATE TABLE "users" (
 CREATE TABLE "recipes" (
     "id" SERIAL PRIMARY KEY,
     "chef_id"  INTEGER REFERENCES chefs(id) NOT NULL,
-    "titlte" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "user_id" INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     "ingredients" TEXT[] NOT NULL,
     "preparation" TEXT[] NOT NULL,
