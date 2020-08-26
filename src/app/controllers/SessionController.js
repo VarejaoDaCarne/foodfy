@@ -1,6 +1,6 @@
-const User = require('../models/User')
 const { hash } = require('bcryptjs')
 const crypto = require('crypto')
+const User = require('../models/User')
 const mailer = require('../../lib/mailer')
 
 module.exports = {
@@ -24,9 +24,9 @@ module.exports = {
         return res.render("session/password-reset", { token: req.query.token})
     },
     async forgot(req, res) {
-        const user = req.user
-
         try{
+            const user = req.user
+            
             const token = crypto.randomBytes(20).toString("hex")
 
             let now = new Date()
@@ -63,7 +63,6 @@ module.exports = {
     },
     async reset(req, res) {
         const user  = req.user
-
         const {  password, token } = req.body
 
         try{
