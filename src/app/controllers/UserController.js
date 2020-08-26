@@ -1,5 +1,5 @@
-const User = require('../models/User')
 const crypto = require('crypto')
+const User = require('../models/User')
 const mailer = require('../../lib/mailer')
 
 module.exports = {
@@ -52,17 +52,24 @@ module.exports = {
         }
     },
     async list(req, res) {
-        let results = await User.all()
-        const users = results.rows
+        try {
+            let users = await User.findAll()
 
-        const { userId: id } = req.session
-
-        return res.render("admin/users/index", { users, userId: id })
+            const { userId: id } = req.session
+    
+            return res.render("admin/users/index", { users, userId: id })
+        } catch (error) {
+            console.error(error)
+        }
     },
     async show(req, res) {
-        const { user } = req
+        try {
+            const { user } = req
     
-        return res.render("admin/users/show", { user })
+            return res.render("admin/users/show", { user })
+        } catch (error) {
+            console.error(error)
+        }
     },
     async put(req, res) {
         try {
@@ -78,11 +85,10 @@ module.exports = {
                 is_admin
             })
 
-            let results = await User.all()
-            const users = results.rows
-            
+            const users = await User.findAll()
+
             return res.render("admin/users/index", {
-                users: users,
+                users,
                 success: "Conta atualizada com sucesso"
             })
         }catch(err) {
@@ -97,11 +103,11 @@ module.exports = {
         try {
             await User.delete(req.body.id)
 
-            let results = await User.all()
-            const users = results.rows
+            users = await User.findAll()
+
 
             return res.render("admin/users/index", {
-                users: users,
+                users,
                 success: "Conta deletada com sucesso"
             })
         }catch(err) {
