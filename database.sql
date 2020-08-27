@@ -68,11 +68,12 @@ ALTER TABLE "session"
 ADD CONSTRAINT "session_pkey"
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
-
-ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
-ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
-ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
-ALTER TABLE "recipe_files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
+ALTER TABLE "chefs" 
+DROP CONSTRAINT chefs_file_id_fkey,
+ADD CONSTRAINT chefs_file_id_fkey
+FOREIGN KEY ("file_id")
+REFERENCES "files" ("id")
+ON DELETE CASCADE;
 
 ALTER TABLE "recipe_files" 
 DROP CONSTRAINT IF EXISTS recipe_files_recipe_id_fkey,
@@ -81,18 +82,11 @@ FOREIGN KEY ("recipe_id")
 REFERENCES "recipes" ("id") 
 ON DELETE CASCADE;
 
-ALTER TABLE "recipe_files"
-DROP CONSTRAINT recipe_files_file_id_fkey,
-ADD CONSTRAINT recipe_files_file_id_fkey
-FOREIGN KEY ("file_id")
-REFERENCES "files"("id")
-ON DELETE CASCADE
-
-ALTER TABLE "chefs" 
-DROP CONSTRAINT chefs_file_id_fkey,
-ADD CONSTRAINT chefs_file_id_fkey
-FOREIGN KEY ("file_id")
-REFERENCES "files" ("id")
+ALTER TABLE "recipe_files" 
+DROP CONSTRAINT IF EXISTS recipe_files_file_id_fkey,
+ADD CONSTRAINT recipe_files_file_id_fkey 
+FOREIGN KEY ("file_id") 
+REFERENCES "files" ("id") 
 ON DELETE CASCADE;
 
 CREATE FUNCTION trigger_set_timestamp()
