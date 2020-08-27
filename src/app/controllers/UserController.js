@@ -1,14 +1,14 @@
 const crypto = require('crypto')
-const User = require('../models/User')
 const mailer = require('../../lib/mailer')
+const User = require('../models/User')
 
 module.exports = {
     registerForm(req, res) {
-        return res.render("admin/users/register")
+        return res.render('admin/users/register')
     },
     async post(req, res) {
         try {
-            const password = crypto.randomBytes(5).toString("hex")
+            const password = crypto.randomBytes(5).toString('hex')
 
             if(req.body.is_admin == undefined)
                 req.body.is_admin = false
@@ -31,7 +31,7 @@ module.exports = {
                 <br/><br/>
                 Clique no link abaixo para acessar sua conta:</p>
                 <p>
-                    <a href="http://localhost:3000/login" target="_blank">
+                    <a href='http://localhost:3000/login' target='_blank'>
                         ACESSAR A CONTA
                     </a>
                 </p>
@@ -41,13 +41,13 @@ module.exports = {
             req.session.destroy()
 
             return res.render('session/login', {
-                success: "Conta criada com sucesso"
+                success: 'Conta criada com sucesso'
             })
-        }catch(err) {
-            console.error(err)
-            return res.render("admin/users/show", {
+        }catch(error) {
+            console.log(error)
+            return res.render('admin/users/show', {
                 user: req.body,
-                error: "Algo deu errado"
+                error: 'Algo deu errado'
             })
         }
     },
@@ -57,18 +57,18 @@ module.exports = {
 
             const { userId: id } = req.session
     
-            return res.render("admin/users/index", { users, userId: id })
+            return res.render('admin/users/index', { users, userId: id })
         } catch (error) {
-            console.error(error)
+            console.log(error)
         }
     },
     async show(req, res) {
         try {
             const { user } = req
     
-            return res.render("admin/users/show", { user })
+            return res.render('admin/users/show', { user })
         } catch (error) {
-            console.error(error)
+            console.log(error)
         }
     },
     async put(req, res) {
@@ -87,15 +87,15 @@ module.exports = {
 
             const users = await User.findAll()
 
-            return res.render("admin/users/index", {
+            return res.render('admin/users/index', {
                 users,
-                success: "Conta atualizada com sucesso"
+                success: 'Conta atualizada com sucesso'
             })
-        }catch(err) {
-            console.error(err)
-            return res.render("admin/users/show", {
+        }catch(error) {
+            console.log(error)
+            return res.render('admin/users/show', {
                 user: req.body,
-                error: "Algo deu errado"
+                error: 'Algo deu errado'
             })
         }
     },
@@ -106,15 +106,15 @@ module.exports = {
             users = await User.findAll()
 
 
-            return res.render("admin/users/index", {
+            return res.render('admin/users/index', {
                 users,
-                success: "Conta deletada com sucesso"
+                success: 'Conta deletada com sucesso'
             })
-        }catch(err) {
-            console.error(err)
-            return res.render("admin/users/show", {
+        }catch(error) {
+            console.error(error)
+            return res.render('admin/users/show', {
                 user: req.body,
-                error: "Algo deu errado"
+                error: 'Algo deu errado'
             })
         }
     }
