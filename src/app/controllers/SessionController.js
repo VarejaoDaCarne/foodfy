@@ -1,33 +1,41 @@
 const { hash } = require('bcryptjs')
 const crypto = require('crypto')
-const User = require('../models/User')
 const mailer = require('../../lib/mailer')
+const User = require('../models/User')
 
 module.exports = {
     loginForm(req, res) {
-        return res.render("session/login")
+        return res.render('session/login')
     },
     async login(req, res) {
-        req.session.userId = req.user.id
+        try {
+            req.session.userId = req.user.id
         
-        return res.redirect("admin/users")
+            return res.redirect('admin/users')
+        } catch (error) {
+            console.log(error)
+        }
     },
     logout(req, res) {
-        req.session.destroy()
+        try {
+            req.session.destroy()
 
-        return res.redirect('/login')      
+            return res.redirect('/login')    
+        } catch (error) {
+            console.log(error)
+        }
     },
     forgotForm(req, res) {
-        return res.render("session/forgot-password")
+        return res.render('session/forgot-password')
     },
     resetForm(req, res) {
-        return res.render("session/password-reset", { token: req.query.token})
+        return res.render('session/password-reset', { token: req.query.token})
     },
     async forgot(req, res) {
         try{
             const user = req.user
             
-            const token = crypto.randomBytes(20).toString("hex")
+            const token = crypto.randomBytes(20).toString('hex')
 
             let now = new Date()
             now = now.setHours(now.getHours() + 1)
@@ -44,20 +52,20 @@ module.exports = {
                 html: `<h2>Esqueceu sua senha?</h2>
                 <p>Não se preocupe, clique no link abaixo para recuperar sua senha</p>
                 <p>
-                    <a href="http://localhost:3000/password-reset?token=${token}" target="_blank">
+                    <a href='http://localhost:3000/password-reset?token=${token}' target='_blank'>
                        RECUPERAR SENHA
                     </a>
                 </p>
                 `,
             })
 
-            return res.render("session/forgot-password", {
-                success: "Cheque seu email para resetar sua senha"
+            return res.render('session/forgot-password', {
+                success: 'Cheque seu email para resetar sua senha'
             })
-        }catch(err) {
-            console.error(err)
-            return res.render("session/forgot-password", {
-                error: "Algo deu errado, tente novamente"
+        }catch(error) {
+            console.log(error)
+            return res.render('session/forgot-password', {
+                error: 'Algo deu errado, tente novamente'
             })
         }
     },
@@ -70,20 +78,20 @@ module.exports = {
 
             await User.update(user.id, {
                 password: newPassword,
-                reset_token: "",
-                reset_token_expires: ""
+                reset_token: '',
+                reset_token_expires: ''
             })
 
-            return res.render("session/login", {
+            return res.render('session/login', {
                 user : req.body,
-                success: "Senha atualizada! Logue."
+                success: 'Senha atualizada! Logue.'
             })
-        }catch(err) {
-            console.error(err)
-            return res.render("session/password-reset", {
+        }catch(error) {
+            console.log(error)
+            return res.render('session/password-reset', {
                 user: req.body,
                 token,
-                error: "Algo deu errado, tente novamente"
+                error: 'Algo deu errado, tente novamente'
             })
         }
     }
