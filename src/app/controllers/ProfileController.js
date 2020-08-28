@@ -16,24 +16,20 @@ module.exports = {
  
     },
     async put(req, res) {
-        const { user } = req
-
         try {
+            const { user } = req
+
             await User.update(user.id, {
                 ...req.body
             })
-
-            let results = await User.all()
-            const users = results.rows
-            
+ 
             return res.render("admin/users/index", {
-                users: users,
                 success: "Conta atualizada com sucesso"
             })
         }catch(err) {
             console.error(err)
             return res.render("admin/profile/index", {
-                user: user,
+                user: req.body,
                 error: "Algo deu errado"
             })
         }

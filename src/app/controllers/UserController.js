@@ -23,8 +23,8 @@ module.exports = {
             await mailer.sendMail({
                 to: req.body.email,
                 from: 'no-reply@foodfy.com.br',
-                subject: 'Conta ',
-                html: `<h2>Acessar o sistema</h2>
+                subject: 'Acessar o sistema',
+                html: `<h2>Olá ${req.body.name},</h2>
                 <p>Sua conta foi criada com sucesso!
                 <br/><br/>
                 Sua senha é: ${password}
@@ -104,7 +104,6 @@ module.exports = {
             await User.delete(req.body.id)
 
             users = await User.findAll()
-
 
             return res.render('admin/users/index', {
                 users,
