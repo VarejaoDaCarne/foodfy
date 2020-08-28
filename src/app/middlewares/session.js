@@ -16,54 +16,38 @@ function isLoggedRedirectToUsers(req, res, next) {
 }
 
 async function onlyOneOwnRecipeOrAdmin(req, res, next) {
-    try {
-        let { userId: id } = req.session
+    let { userId: id } = req.session
 
-        const user = await User.findOne({ 
-            where: { id }
-        })
-    
-        let results = await Recipe.find(req.params.id)
-        const recipe = results.rows[0].user_id
-    
-        if(!user.is_admin && recipe != id)
-            return res.render(`admin/profile/index`, {
-                user: user,
-                error: "Apenas administrador ou a sua própria conta" 
-            })
-    
-        next()
-    } catch (error) {
-        console.error(error)
+    const user = await User.findOne({ 
+        where: { id }
+    })
+
+    let recipe = await Recipe.find(req.params.id)
+
+    if(!user.is_admin && recipe != id)
         return res.render(`admin/profile/index`, {
             user: user,
-            error: "Algo deu errado" 
+            error: "Apenas administrador ou a sua própria conta" 
         })
-    }
+
+    next()
 }
 
 async function onlyUserOrAdmin(req, res, next) {
-    try {
-        let { userId: id } = req.session
+    let { userId: id } = req.session
 
-        const user = await User.findOne({ 
-            where: { id }
-        })
-    
-        if(!user.is_admin && req.params.id != user.id) 
-            return res.render(`admin/profile/index`, {
-                user: user,
-                error: "Apenas administrador ou a sua própria conta" 
-            })
-    
-        next()
-    } catch (error) {
-        console.error(error)
+    const user = await User.findOne({ 
+        where: { id }
+    })
+
+    if(!user.is_admin && req.params.id != user.id) 
         return res.render(`admin/profile/index`, {
             user: user,
-            error: "Algo deu errado" 
+            error: "Apenas administrador ou a sua própria conta" 
         })
-    }
+
+    next()
+
 }
 
 module.exports = {
