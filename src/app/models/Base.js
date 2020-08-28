@@ -61,35 +61,44 @@ const Base = {
             let keys = [],
                 values = []
 
-                Object.keys(fields).map(key => {
-                    keys.push(key)
+            Object.keys(fields).map(key => {
+                keys.push(key)
+
+                if (Array.isArray(fields[key])) {
+                    values.push(`'{"${fields[key].join('","')}"}'`)
+                } else {
                     values.push(`'${fields[key]}'`)
-                })
+                }
+            })
 
-                const query = `
-                    INSERT INTO ${this.table} (${keys.join(',')})
-                    VALUES (${values.join(',')})
-                    RETURNING id
-                `
+            const query = `
+                INSERT INTO ${this.table} ( ${keys.join(',')} ) 
+                VALUES (${values.join(',')})
+                RETURNING id
+            `
+            const results = await db.query(query)
 
-                const results = await db.query(query)
-                return results.rows[0].id
+            return results.rows[0].id
         } catch (error) {
             console.error(error)
         }
     },
     async update(id, fields) {
         try {
-            let update = []
+            let values = []
 
             Object.keys(fields).map(key => {
-                const line = `${key} = '${fields[key]}'`
-                update.push(line)
+                if (Array.isArray(fields[key])) {
+                    values.push(`${key} = '{"${fields[key].join('","')}"}'`)
+                } else {
+                    values.push(`${key} = '${fields[key]}'`)
+                }
             })
 
-            let query = `
-                UPDATE ${this.table} SET
-                ${update.join(',')} WHERE id = ${id}
+            const query = `
+                UPDATE ${this.table} SET 
+                ${values.join(',')}
+                WHERE id = ${id}
             `
 
             return db.query(query)
