@@ -1,0 +1,90 @@
+
+.body-admin {
+    background: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    color: #111111;
+}
+    
+.body-admin {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header-admin {
+    background-color: #111111;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.links-admin {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.links-admin a img {
+    margin-right: 50px;
+}
+
+.links-admin a,
+.body-admin .header-admin .links-admin #logout button {
+    font-size: 15px;
+    text-decoration: none;
+    color: #999999;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.links-admin a.active,
+.links-admin a:hover,
+.body-admin .header-admin .links-admin #logout button:hover {
+    color: #FFFFFF;
+}
+
+#admin-create-button {
+    text-decoration: none;
+}
+
+#section-admin {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#receipts-admin {
+    max-width: 1200px;
+    margin: 30px auto;
+    grid-template-columns: 1fr 1fr;
+}
+
+#receipt-admin { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#receipt__admin-container  {
+    margin-bottom: 30px;
+    border-radius: 8.5px;
+    cursor: initial;
+    box-sizing: border-box;
+}
+
+.receipt__content-chef{
+    margin-bottom: 30px;
+}
+
+#receipt__content-admin {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.receipt__content-see {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--primary-color);
+    cursor: pointer;
+    text-decoration: none;
+}

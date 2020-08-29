@@ -1,0 +1,71 @@
+
+.create-wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.upper-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 139px;
+    margin: 20px auto;
+    width: 1200px;
+    align-items: center;
+}
+
+button[type="submit"],
+#admin-edit-button,
+#admin-create-button,
+#admin-cancel-button{
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    padding: 13px 15px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-left: 10px;
+}
+
+#form-delete {
+    justify-self: end;
+}
+
+#form-delete button[type="submit"] {
+    background-color: #DC4747;
+}
+
+section form .input-wrapper {
+    margin-top: 20px ;
+}
+
+.input-wrapper h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.input-wrapper #title h2 {
+    margin-top: 10px;
+}
+
+.input-wrapper input,
+textarea,
+select, span {
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    padding: 15px 10px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.add-ingredient, .add-prepare  {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+    background-color: #FFFFFF;
+    outline: none;
+    margin-bottom: 20px;
+}
