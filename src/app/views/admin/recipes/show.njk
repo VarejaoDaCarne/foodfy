@@ -14,20 +14,20 @@
             <div class="highlight">
                 <div class="banner-container">
                     <div class="receipt__image" class="banner__container-image">
-                        {% if not files[0] %}
+                        {% if not recipe.img %}
                             <img src="http://placehold.it/900x900?text=PRODUTO SEM FOTO" />
                         {% else %}
                         
                             <img 
-                                src="{{files[0].src}}" 
-                                alt="{{files[0].name}}"
+                                src="{{recipe.img}}" 
+                                alt="Imagem de {{ recipe.title}}"
                                 onclick="Lightbox.open()"
                             >
                         {% endif %}
                     </div>
 
                     <div class="lightbox-target">
-                        <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                        <img src="{{recipe.img}}" alt="Imagem de {{ recipe.title}}">
                         <a 
                             href="#" 
                             class="lightbox-close"
@@ -40,10 +40,10 @@
             </div>
             
             <div class="gallery-preview">
-                {% for image in files %}
+                {% for image in recipe.images %}
                     <img 
                         src="{{image.src}}" 
-                        alt="{{image.name}}"
+                        alt="Imagem de {{recipe.title}}"
                         {% if loop.index0 == 0 %}
                             class="active"
                         {% endif %}
