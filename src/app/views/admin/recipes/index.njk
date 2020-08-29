@@ -17,9 +17,9 @@
                     <div class="receipt__image-container" id="receipt__admin-container">
                         <img
                             src="{{recipe.img}}" 
-                            alt="{{recipe.title}}"
+                            alt="Imagem de {{recipe.title}}"
                             {% if recipe.img == "" %}
-                            src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
+                                src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
                             {% endif %}
                         >
                     </div>
