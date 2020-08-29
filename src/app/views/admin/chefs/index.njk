@@ -1,4 +1,4 @@
-{% extends "../layout.njk" %}
+{% extends "layout.njk" %}
 
 {% block head %}
     <title>Admin - Chefs</title>
@@ -15,7 +15,7 @@
                 <article class="chef__container"> 
                     <div class="chef-image__container">
                         <img    
-                            src="{{chef.img}}" 
+                            src="{{chef.src}}" 
                             alt="{{chef.name}}"
                             {% if chef.img == "" %}
                                 src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
