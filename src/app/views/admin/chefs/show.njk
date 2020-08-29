@@ -12,7 +12,12 @@
         </div>
         
         <div class="banner-container" id="">
-            <div class="chef-show-image"><img src="{{file[0].src}}" alt="Imagem de {{chef.name}}"></div>
+            <div class="chef-show-image">
+                <img 
+                    src="{{chef.src}}" 
+                    alt="Imagem de {{chef.name}}"
+                >
+            </div>
             <div class="banner-content">
                 <h1>{{chef.name}}</h1>
                 <p>{{chefs.total_recipes}}</p> 
@@ -26,12 +31,8 @@
                 <article class="receipt" id="receipt-admin"> 
                     <div class="receipt__image-container" id="receipt__admin-container">
                         <img
-                            {% for images in recipeFile %}
-                                {% if recipe.id == images.id %}
-                                    src="{{images.src}}" 
-                                    alt="Imagem de {{images.id}}"
-                                {% endif %}
-                            {% endfor %}
+                            src="{{recipe.img}}" 
+                            alt="Imagem de {{recipe.title}}"
                             id="receipt-img" 
                         >
                     </div>
