@@ -30,10 +30,12 @@
             <input 
                 type="checkbox" 
                 name="is_admin"
+                value="true"
                 {% if user.is_admin == true %}
                     checked
                 {% endif %}
-            ><label for="is_admin">Administrador</label>
+            >
+            <label for="is_admin">Administrador</label>
         </div>
     </div>
 </div>
