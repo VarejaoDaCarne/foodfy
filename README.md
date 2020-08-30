@@ -8,15 +8,16 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub contagem de linguagens" src="https://img.shields.io/github/languages/count/grioos/foodfy?color=%2304D361">
+  <img alt="GitHub contagem de linguagens" src="https://img.shields.io/github/languages/count/grioos/foodfy?color=%2304D361&style=flat-square">
 
-  <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/grioos/foodfy">
+  <img alt="Tamanho do repositório" src="https://img.shields.io/github/repo-size/grioos/foodfy?style=flat-square">
 
   <a href="https://github.com/grioos/README-proffy/commits/master">
-    <img alt="GitHub último commit" src="https://img.shields.io/github/last-commit/grioos/foodfy">
+    <img alt="GitHub último commit" src="https://img.shields.io/github/last-commit/grioos/foodfy?style=flat-square">
   </a>
     
-   <img alt="License" src="https://img.shields.io/badge/license-MIT-8622f8">
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-8622f8?style=flat-square">
+   
    <a href="https://github.com/grioos/foodfy/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/grioos/foodfy?style=social">
   </a>
