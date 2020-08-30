@@ -56,58 +56,6 @@ Projeto desenvolvido durante o **Bootcamp Launchbase** oferecido pela [Rocketsea
 
 ---
 
-## 🎨 Screenshots
-
-* Criar chef
-
-![Admin create recipe](/.github/screenshots/admin-create-chef.png)
-
-* Editar receita
-
-![Admin edit recipe](/.github/screenshots/admin-edit-recipe.png)
-
-* Criar usuário
-
-![Admin create user](/.github/screenshots/admin-create-user.png)
-
-* Chef detalhes
-
-![Admin show chef](/.github/screenshots/admin-show-chef.png)
-
-* Listagem usuários
-
-![Admin users](/.github/screenshots/admin-users.png)
-
-* Listagem chefs
-
-![Guest show chefs](/.github/screenshots/chefs-guest.png)
-
-* Recuperar senha
-
-![Forget password](/.github/screenshots/forget-password.png)
-
-* Logar
-
-![Login](/.github/screenshots/login.png)
-
-* Atualizar senha
-
-![Password update](/.github/screenshots/password-update.png)
-
-* Receitas filtro
-
-![Recipe filter](/.github/screenshots/recipes-filter.png)
-
-* Receita modal
-
-![Recipes modal](/.github/screenshots/recipes-modal.jpg)
-
-* Receita detalhes
-
-![Recipes show guest](/.github/screenshots/recipes-show-guest.png)
-
----
-
 ## 🚀 Como executar o projeto
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
