@@ -1,0 +1,144 @@
+.recipe {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+    /* === GALLERY === */
+
+.recipe .gallery {
+    width: 100%;
+}
+
+.recipe .gallery .highlight > img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 15px;
+    cursor: zoom-in;
+}
+
+.recipe .gallery-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    gap: 15px;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.recipe .gallery-preview img {
+    height: 50px;
+    width: 50px;
+    border: 1px solid var(--color-border-primary);
+    border-radius: 3.5px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.recipe .gallery-preview img:hover,
+.recipe .gallery-preview img.active {
+    opacity: 0.5;
+}
+
+.recipe .highlight .lightbox-target {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    overflow: hidden;
+    z-index: 100;
+    top: -100%;
+    left: 0;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+.recipe .highlight .lightbox-target img {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--color-background);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+.recipe .highlight a.lightbox-close {
+    width: 50px;
+    height: 50px;
+    background: var(--color-background);
+    position: absolute;
+    top: -80px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 400ms;
+}
+
+    /* === RECIPE DETAILS === */
+
+.recipe .recipe-info {
+   text-align: center;
+   margin: 20px 0;
+}
+
+.recipe .recipe-info h1 {
+    font-size: 36px;
+    color: var(--text-in-primary);
+}
+
+.recipe .recipe-info p {
+    font-size: 20px;
+    color: var(--text-info);
+}
+
+.recipe .text-wrapper {
+    display: flex;
+    align-items: baseline;
+}
+
+.recipe .text-wrapper h2 {
+    font-size: 24px;
+    color: var(--text-in-primary);
+}
+
+.recipe .text-wrapper h3 {
+    margin-left: 10px;
+    font-size: 12px;
+    color: var(--text-info-darker);
+}
+
+.recipe .details-container ul {
+    margin: 20px 0;
+}
+
+.recipe .details-container li {
+    font-size: 18px;
+    color: var(--text-base);
+    line-height: 28px;
+    margin-left: 20px;
+}
+
+.recipe .item + .item {
+    margin-top: 40px;
+}
+
+   /* === TOGGLE === */
+
+.recipe .item.toggle ul {
+    opacity: 1;
+    visibility: initial;
+    height: 100%;
+}   
+
+.recipe .item.active ul {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+}  
