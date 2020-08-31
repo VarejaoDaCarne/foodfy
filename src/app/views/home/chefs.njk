@@ -1,38 +1,12 @@
-{% extends "layout.njk" %}
+{% extends './layout.njk' %}
+{% import '../parts/chefs-show.njk' as show %}
 
 {% block head %}
-    <title>Chefs - Foodfy</title>
+    <title>Foodfy - Chefs</title>
 {% endblock %}
 
 {% block content %}
-    <section id="foodfy-chefs">
-        <div id="foodfy-recipes-title">
-           <h1>Chefs</h1>
-        </div>
 
-        <div class="chefs__container">
-            {% for chef in chefs %}
-                <article class="chef__container"> 
-                    <div class="chef-image__container">
-                        <img 
-                            src="{{chef.img}}" 
-                            alt="Imagem de {{chef.name}}"
-                            {% if chef.img == "" %}
-                                src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
-                            {% endif %}
-                        >
-                    </div>
-
-                    <div class="chef-text__container">
-                        <p>{{chef.name}}</p>
-                        <p>{{chef.total_recipes}} receitas</p>
-                    </div>
-
-                    {% if chefs.recipeIndex %}
-                    {% endif %}
-                </article>
-            {% endfor %}
-        </div>
-    </section>
+    {{show.chefs('', '', chefs)}}
 
 {% endblock %}
