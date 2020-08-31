@@ -1,0 +1,37 @@
+{% macro chefs(title, classes, chefs) %}
+    <main class='chefs-container'>
+        <div class='upper-wrapper'>
+            {% if title %}
+                <h1>{{title}}</h1>
+           {% endif %}
+        </div>
+
+        <div class='chefs'>
+            {% for chef in chefs %}
+                <div class='item'>
+                    <div class='chef-image'>
+                        <a href='/chefs/{{chef.id}}'>
+                            <img 
+                                src='{{chef.src}}' 
+                                alt='Imagem de {{chef.name}}'
+                                {% if chef.img == '' %}
+                                    src='http://placehold.it/600x300?text=PRODUTO SEM FOTO'
+                                {% endif %}
+                            >
+                        </a>
+                    </div>
+
+                    <div class='chef-info'>
+                        <h2>{{chef.name}}</h2>
+                        <h3>{{chef.total_recipes}} receitas</h3>
+                        <h3 href='/chefs/{{chef.id}}'>Visualizar</h3>
+                    </div>
+                </div>
+
+                {% if chefs.recipeIndex %}
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </main>
+{% endmacro %}
