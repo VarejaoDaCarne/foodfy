@@ -1,47 +1,23 @@
-{% extends "layout.njk" %}
+{% extends './layout.njk' %}
+{% import './parts/section-recipes.njk' as section %}
 
 {% block head %}
-    <title>Home - Foodfy</title>
+    <title>Foodfy - Home</title>
 {% endblock %}
 
 {% block content %}
-  
-    <main class="home">
-        <div class="home-content">
-            <div class="title-subtitle">
+    <section class='home'>
+        <div class='banner'>
+            <div class='banner-info'>
                 <h1>As melhores receitas</h1>
                 <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
             </div>
-            <img src="https://raw.githubusercontent.com/Rocketseat/bootcamp-launchbase-desafios-02/master/layouts/assets/chef.png" alt="Foodfy chef">
-        </div>
-    </main>
-    
-    <section>
-        <div class="wrapper">
-            <h1>Mais acessadas</h1>
-        </div>
-        <div class="receipts">
-            {% for recipe in recipes %}
-                <article class="receipt"> 
-                    <div class="receipt__image-container">
-                        <a href="/recipes/{{recipe.id}}" >
-                            <img  
-                                src="{{recipe.img}}" 
-                                alt="{{recipe.title}}"
-                                {% if recipe.img == "" %}
-                                    src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
-                                {% endif %}
-                                class="receipt-img" 
-                            >
-                        </a>
-                    </div>
 
-                    <div class="receipt__content">
-                        <p class="receipt__content-receipt">{{recipe.title}}</p>
-                        <p class="receipt__content-chef">por {{recipe.chef_name}}</p>
-                    </div>
-                </article>
-            {% endfor %}
+            <div class='banner-img'>
+                <img src='https://raw.githubusercontent.com/Rocketseat/bootcamp-launchbase-desafios-02/master/layouts/assets/chef.png' alt='Foodfy chef'>
+            </div>
         </div>
     </section>
+    
+    {{section.recipes('Mais Acessadas', recipes)}}
 {% endblock %}
