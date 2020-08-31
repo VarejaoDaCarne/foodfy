@@ -1,11 +1,8 @@
 {% macro recipes(title, recipes) %}
+    <section class="recipes-container">
+        <h2>{{title}}</h2>
 
-    <section>
-        {% if title %}
-            <h2>{{title}}</h2>
-        {% endif %}
-
-        <div class='recipes'>
+        <div class='recipes'>''
             {% for recipe in recipes %}
                 <div class='recipe'> 
                     <div class='recipe-image'>
