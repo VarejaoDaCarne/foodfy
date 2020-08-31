@@ -1,39 +1,12 @@
-{% extends "layout.njk" %}
+{% extends './layout.njk' %}
+{% import './parts/section-recipes.njk' as section %}
 
 {% block head %}
-    <title>Receitas - Foodfy</title>
+    <title>Foodfy - Receitas</title>
 {% endblock %}
 
 {% block content %}
-    <section>          
-       <div id="foodfy-recipes-title">
-           <h1>Receitas</h1>
-        </div>
 
-        <div class="receipts">
-            {% for recipe in recipes %}
-                <article class="receipt" > 
-                    <div class="receipt__image-container">
-                    <a href="/recipes/{{recipe.id}}" >
-                        <img  
-                            src="{{recipe.img}}" 
-                            alt="{{recipe.title}}"
-                            {% if recipe.img == "" %}
-                                src="http://placehold.it/600x300?text=PRODUTO SEM FOTO"
-                            {% endif %}
-                            class="receipt-img" 
-                        >
-                    </a>
-                    </div>
-                    
-                    <div class="receipt__content">
-                        <p class="receipt__content-receipt">{{recipe.title}}</p>
-                        <p class="receipt__content-chef">por {{recipe.chef_name}}</p>
-                    </div>
-                    {% if recipes.recipeIndex %}
-                    {% endif %}
-                </article>
-            {% endfor %}
-        </div>
-    </section>
+    {{section.recipes('Receitas', recipes)}}
+
 {% endblock %}
