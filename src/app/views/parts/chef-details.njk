@@ -1,0 +1,29 @@
+{% macro details(title, classes, chefs) %}
+    <main class='chef'>
+        <div>
+            <h2>Chef: {{chef.name}}</h2>
+        </div>
+        
+        <div class='banner'>
+            <div class='banner-img'>
+                <img 
+                    src='{{chef.src}}' 
+                    alt='Imagem de {{chef.name}}'
+                >
+            </div>
+        </div>
+
+        <div class='chef-info'>
+            <h1>Julia Kinito{{chef.name}}</h1>
+            <p>4 receitas{{chefs.total_recipes}}</p> 
+        </div>
+
+        <div class='recipes'>
+            <h2>Receitas</h2>
+
+            {% for recipe in recipes %}
+                {# section recipes under construction #}
+            {% endfor %}
+        </div>
+    </main>
+{% endmacro %}
