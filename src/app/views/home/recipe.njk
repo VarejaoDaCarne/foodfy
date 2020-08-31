@@ -1,0 +1,12 @@
+{% extends './layout.njk' %}
+{% import '../parts/recipe-details.njk' as show %}
+
+{% block head %}
+    <title>Foodfy - {{recipe.title}}</title>
+{% endblock %}
+
+{% block content %}
+
+    {{show.details(recipe)}}
+
+{% endblock %}
