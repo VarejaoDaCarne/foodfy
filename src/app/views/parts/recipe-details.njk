@@ -1,0 +1,88 @@
+{% macro details(recipe) %}
+    <main class="recipe">
+        <div class="upper-wrapper {{classes}}">
+            <h1>Receita: {{recipe.title}}</h1>
+            <a href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        </div>
+
+        <div class="gallery">
+            <div class="highlight">
+                {% if not recipe.img %}
+                    <img src="http://placehold.it/900x900?text=PRODUTO SEM FOTO" />
+                {% else %}
+                    <img 
+                        src="{{recipe.img}}" 
+                        alt="Imagem de {{recipe.title}}"
+                        onclick="Lightbox.open()"
+                    >
+                {% endif %}
+
+                <div class="lightbox-target">
+                    <img src="{{recipe.img}}" alt="Imagem de {{recipe.title}}">
+                    <a 
+                        href="#" 
+                        class="lightbox-close"
+                        onclick="Lightbox.close()"
+                    >
+                        <i class="material-icons">close</i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="gallery-preview">
+                {% for image in recipe.images %}
+                    <img 
+                        src="{{image.src}}" 
+                        alt="Imagem de {{recipe.title}}"
+                        {% if loop.index0 == 0 %}
+                            class="active"
+                        {% endif %}
+                        onclick="ImageGallery.setImage(event)"
+                    >
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="details-container">
+            <div class="recipe-info" >
+                <h1>{{recipe.title}}</h1>
+                <p>por {{recipe.chef_name}}</p> 
+            </div>
+
+            <div class="item toggle">
+                <div class="text-wrapper">                    
+                    <h2>Ingredientes</h2>
+                    <h3 >ESCONDER</h3>
+                </div>
+
+                <ul>
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+            </div> 
+
+            <div class="item toggle">
+                <div class="text-wrapper">                    
+                    <h2>Modo de preparo</h2>
+                    <h3>ESCONDER</h3>
+                </div>
+
+                <ul >
+                    {% for preparation in recipe.preparation %}
+                        <li>{{preparation}}</li>
+                    {% endfor %}
+                </ul>
+            </div> 
+
+            <div class="item toggle">
+                <div class="text-wrapper">                    
+                    <h2>Informações adicionais</h2>
+                    <h3>ESCONDER</h3>
+                </div>
+                
+                <ul>{{recipe.information}}</ul>
+            </div> 
+        </div>
+    </main>
+{% endmacro %}
