@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 module.exports = {
     loginForm(req, res) {
-        return res.render('session/login')
+        return res.render('admin/session/login')
     },
     async login(req, res) {
         try {
@@ -26,10 +26,10 @@ module.exports = {
         }
     },
     forgotForm(req, res) {
-        return res.render('session/forgot-password')
+        return res.render('admin/session/password-forgot')
     },
     resetForm(req, res) {
-        return res.render('session/password-reset', { token: req.query.token})
+        return res.render('admin/session/password-reset', { token: req.query.token})
     },
     async forgot(req, res) {
         try{
@@ -59,12 +59,12 @@ module.exports = {
                 `,
             })
 
-            return res.render('session/forgot-password', {
+            return res.render('admin/session/forgot-password', {
                 success: 'Cheque seu email para resetar sua senha'
             })
         }catch(error) {
             console.log(error)
-            return res.render('session/forgot-password', {
+            return res.render('admin/session/forgot-password', {
                 error: 'Algo deu errado, tente novamente'
             })
         }
