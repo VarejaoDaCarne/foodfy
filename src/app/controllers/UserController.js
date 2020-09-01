@@ -40,7 +40,7 @@ module.exports = {
             
             req.session.destroy()
 
-            return res.render('session/login', {
+            return res.render('admin/session/login', {
                 success: 'Conta criada com sucesso'
             })
         }catch(error) {
