@@ -1,12 +1,10 @@
 {% extends './layout.njk' %}
-{% import '../parts/chefs-show.njk' as show %}
+{% import '../parts/chefs-list.njk' as show %}
 
 {% block head %}
     <title>Foodfy - Chefs</title>
 {% endblock %}
 
 {% block content %}
-
     {{show.chefs('', '', chefs)}}
-
 {% endblock %}
