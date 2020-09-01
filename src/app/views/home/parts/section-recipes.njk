@@ -1,10 +1,10 @@
 {% macro recipes(title, recipes) %}
-    <section class="recipes-container">
+    <section class="container section-recipes">
         <h2>{{title}}</h2>
 
         <div class='recipes'>''
             {% for recipe in recipes %}
-                <div class='recipe'> 
+                <div class='item'> 
                     <div class='recipe-image'>
                         <a href='/recipes/{{recipe.id}}' >
                             <img  
