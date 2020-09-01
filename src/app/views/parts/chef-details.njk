@@ -1,7 +1,7 @@
 {% macro details(title, classes, chefs) %}
-    <main class='chef'>
-        <div>
-            <h2>Chef: {{chef.name}}</h2>
+    <main class='container chef-details'>
+        <div class='upper-wrapper'>
+            <h1>Chef: {{chef.name}}</h1>
         </div>
         
         <div class='banner'>
@@ -14,12 +14,12 @@
         </div>
 
         <div class='chef-info'>
-            <h1>Julia Kinito{{chef.name}}</h1>
-            <p>4 receitas{{chefs.total_recipes}}</p> 
+            <h2>Julia Kinito{{chef.name}}</h2>
+            <h3>4 receitas{{chefs.total_recipes}}</h3> 
         </div>
 
         <div class='recipes'>
-            <h2>Receitas</h2>
+            <h4>Receitas</h4>
 
             {% for recipe in recipes %}
                 {# section recipes under construction #}
