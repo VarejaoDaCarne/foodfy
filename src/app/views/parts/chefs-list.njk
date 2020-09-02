@@ -1,10 +1,6 @@
-{% macro chefs(title, classes, chefs) %}
+{% macro render(chefs, hide, link) %}
     <main class='container chefs-list'>
-        <div class='upper-wrapper'>
-            {% if title %}
-                <h1>{{title}}</h1>
-           {% endif %}
-        </div>
+        {{ caller() }}
 
         <div class='chefs'>
             {% for chef in chefs %}
@@ -21,10 +17,10 @@
                         </a>
                     </div>
 
-                    <div class='chef-info'>
+                    <div class='chef-info {{hide}}'>
                         <h2>{{chef.name}}</h2>
                         <h3>{{chef.total_recipes}} receitas</h3>
-                        <h3 href='/chefs/{{chef.id}}'>Visualizar</h3>
+                        <a class='button visualize' href='/{{link}}/{{chef.id}}'>Visualizar</a>
                     </div>
                 </div>
 
