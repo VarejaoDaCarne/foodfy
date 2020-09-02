@@ -1,12 +1,11 @@
 {% extends './layout.njk' %}
-{% import './parts/section-recipes.njk' as section %}
+{% import '../parts/recipes-list.njk' as show %}
 
 {% block head %}
     <title>Foodfy - Receitas</title>
 {% endblock %}
 
 {% block content %}
-
-    {{section.recipes('Receitas', recipes)}}
-
+    {% call show.render('section-recipes', recipes, '') %}
+    {% endcall %}
 {% endblock %}
