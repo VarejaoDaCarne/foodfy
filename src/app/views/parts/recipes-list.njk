@@ -1,0 +1,29 @@
+{% macro render(class, recipes, link) %}
+    <section class='container {{class}}'>
+        {{ caller() }}
+
+        <div class='recipes'>''
+            {% for recipe in recipes %}
+                <div class='item'> 
+                    <div class='recipe-image'>
+                        <a href='/recipes/{{recipe.id}}' >
+                            <img  
+                                src='{{recipe.img}}' 
+                                alt='{{recipe.title}}'
+                                {% if recipe.img == '' %}
+                                    src='http://placehold.it/600x300?text=PRODUTO SEM FOTO'
+                                {% endif %}
+                            >
+                        </a>
+                    </div>
+
+                    <div class='recipe-info'>
+                        <h2>{{recipe.title}}</h2>
+                        <h3>por {{recipe.chef_name}}</h3>
+                        <a class='button visualize' href='/{{link}}/{{recipe.id}}'>Visualizar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endmacro %}
