@@ -1,22 +1,22 @@
 {% extends '../layout.njk' %}
 
 {% block head %}
-    <title>Usuários cadastro - Admin Foodfy</title>
+    <title>Admin Foodfy - Usuários Cadastro</title>
 {% endblock %}
 
 {% block content%}
-    <form  method="POST" action="/admin/users">
-        <section class="create-wrapper" id="user-register-upper">
-            <div class="upper-wrapper" id="upper-wrapper-button">
+    <section class='container users-container'>
+        <form  method='POST' action='/admin/users'>
+            <div class='upper-wrapper grid'>
                 <h1>Criar Usuário</h1>
 
-                <div class="fields">
-                    {% include 'admin/users/fields.njk' %}
-                </div>
-
-                <button type="submit" id="admin-edit-button">Salvar</button>
-                <a href="/admin/users" id="admin-cancel-button">Cancelar</a>  
+                <button class='button' type='submit'>Salvar</button>
+                <a class='button cancel link' href='/admin/users'>Cancelar</a>  
             </div>
-        </section>
-    </form>
+
+            <div class='fields'>
+                {% include 'admin/users/fields.njk' %}
+            </div>
+        </form>
+    </section>
 {% endblock %}
