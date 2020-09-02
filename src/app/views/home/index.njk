@@ -1,8 +1,8 @@
 {% extends './layout.njk' %}
-{% import './parts/section-recipes.njk' as section %}
+{% import '../parts/recipes-list.njk' as show %}
 
 {% block head %}
-    <title>Foodfy - Home</title>
+    <title>Foodfy</title>
 {% endblock %}
 
 {% block content %}
@@ -19,5 +19,9 @@
         </div>
     </section>
     
-    {{section.recipes('Mais Acessadas', recipes)}}
+    {% call show.render('section-recipes', recipes, '') %}
+       <div class='upper-wrapper'>
+            <h1>Mais acessadas</h1>  
+        </div>
+    {% endcall %}
 {% endblock %}
