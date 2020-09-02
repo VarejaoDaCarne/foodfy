@@ -13,13 +13,15 @@
     </div>
    
     <form action='/search' method='GET' class='filter-form'>
-        <input 
-            type='text' 
-            name='filter'
-            placeholder='Buscar uma receita'
-            value={{filter}}
-        >
-        
+        <div class="input">
+            <input 
+                type='text' 
+                name='filter'
+                placeholder='Buscar uma receita'
+                value={{filter}}
+            >
+        </div>
+   
         <button class='button' type='submit'>Buscar</button>
     </form>
 </header>
