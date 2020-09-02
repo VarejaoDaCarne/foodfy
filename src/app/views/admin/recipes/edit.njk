@@ -1,36 +1,35 @@
 {% extends '../layout.njk' %}
 
 {% block head %}
-
-    <title>Edição - {{recipe.title}}</title>
-
+    <title>Admin Foodfy - Edição Receita {{recipe.title}}</title>
 {% endblock %}
 
 {% block content%}
-    <section class="create-wrapper">
-        <div class="edit-upper-wrapper">
+    <section class='container recipes-container'>
+        <div class='upper-wrapper grid'>
             <h1>Editando receita</h1>
         
-            <form method="POST" action="/admin/recipes?_method=DELETE" id="form-delete">
-                <input type="hidden" name="id" value={{recipe.id}}>
+            <form method='POST' action='/admin/recipes?_method=DELETE'>
+                <input type='hidden' name='id' value={{recipe.id}}>
 
-                <button type="submit">Deletar</button>
+                <button class='button delete' type='submit'>Deletar</button>
             </form>
 
-            <button type="submit" form="form-edit">Salvar receita</button>
+            <form method='POST' action='/admin/recipes?_method=PUT' id='form-edit' enctype='multipart/form-data'>
+                <button class='button' type='submit' form='form-edit'>Salvar receita</button>
         </div>
-            <form method="POST" action="/admin/recipes?_method=PUT" id="form-edit" enctype="multipart/form-data">
-                {% include 'admin/recipes/fields.njk' %}
 
-                <input 
-                    type="hidden" 
-                    name="id" 
-                    value={{recipe.id}}
-                >
-            </form>   
-        </div>
+            <div class="fields">
+                {% include 'admin/recipes/fields.njk' %}
+            </div>
+
+            <input 
+                type='hidden' 
+                name='id' 
+                value={{recipe.id}}
+            >
+        </form>   
     </section>
 
-    {% include 'confirm.njk' %}
-
+    {% include '../parts/confirm.njk' %}
 {% endblock %}
