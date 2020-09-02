@@ -6,5 +6,9 @@
 {% endblock %}
 
 {% block content %}
-    {{show.chefs('', '', chefs)}}
+    {% call show.render(chefs, 'see', '') %}
+    {% endcall %}
+
+    {% if chefs.recipeIndex %}
+    {% endif %}
 {% endblock %}
