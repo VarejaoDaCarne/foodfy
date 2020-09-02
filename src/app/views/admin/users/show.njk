@@ -1,33 +1,35 @@
-{% extends "../layout.njk" %}
+{% extends '../layout.njk' %}
 
 {% block head %}
-    <title>{{user.name}} - Admin Foodfy</title>
+    <title>Admin Foodfy - Usuário {{user.name}}</title>
 {% endblock %}
 
 {% block content %}
-    <section class="edit-wrapper" id="user-register-upper">
-        <div class="edit-upper-wrapper" id="button-upper-user">
+    <section class='container users-container'>
+        <div class='upper-wrapper grid'>
             <h1>Atualizar Usuário</h1>
 
-            <form method="POST" action="/admin/users?_method=DELETE" id="form-delete">
-                <input type="hidden" name="id" value={{user.id}}>
+            <form method='POST' action='/admin/users?_method=DELETE'>
+                <input type='hidden' name='id' value={{user.id}}>
 
-                <button type="submit" id="user-delete-button">Deletar</button>
+                <button class='button delete' type='submit'>Deletar</button>
             </form>
 
-            <form method="POST" action="/admin/users?_method=PUT">
-                <button type="submit" id="user-edit-button">Salvar</button>
-        </div>
+            <form method='POST' action='/admin/users?_method=PUT'>
+                <button class='button' type='submit' >Salvar</button>
+        </div>  
 
+            <div class='fields'>
                 {% include 'admin/users/fields.njk' %}
-        
-                <input 
-                    type="hidden" 
-                    name="id" 
-                    value={{user.id}}
-                >
-            </form>   
+            </div>
+    
+            <input 
+                type='hidden' 
+                name='id' 
+                value={{user.id}}
+            >
+        </form>   
     </section>
 
-    {% include 'confirm.njk' %}
+    {% include '../parts/confirm.njk' %}
 {% endblock %}
