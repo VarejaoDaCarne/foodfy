@@ -1,50 +1,49 @@
-chefs__container {
+.chefs-list .chefs {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
+    margin: 10px 0px;
+    gap: 50px;
 }
 
-.chef__container {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    margin-bottom: 20px;
-    margin-top: 25px;
+.chefs-list .item {
+    display: flex;
+    margin: 20px 0;
 }
 
-.chef-image__container img  {
+.chefs-list .chef-image img  {
     width: 90px;
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.chef-text__container {
-    margin: 10px;
+.chefs-list .chef-info {
+    align-self: center;
+    margin: 0 20px;
 }
 
-.chef-text__container p:first-child{
+.chefs-list .chef-info h2 {
     font-size: 18px;
     line-height: 28px;
+    font-weight: normal;
+    color: var(--color-primary);
 }
 
-.chef-text__container p:nth-child(2){
+.chefs-list .chef-info h3 {
     font-size: 14px;
     line-height: 24px;
-    color: #666666;
+    font-weight: normal;
+    color: var(--color-secondary);
 }
 
-/* === CHEF SHOW === */
+    /* === HIDE === */
 
-.chef-show-image {
-    height: 275px;
-    width: 275px;
-    margin: 0 auto;
+.chefs .chef-info.total-recipes h3 {
+    display: none;
 }
 
-.chef-show-image img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
+.chefs .chef-info.see a {
+    display: none;
+    overflow: hidden;
+    opacity: 0;
 }
-    
