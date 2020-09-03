@@ -1,34 +1,23 @@
-<!DOCTYPE njk>
-
-<html>    
+<!DOCTYPE html>
+<html lang='pt-br'>    
     <head>
-        <meta charset="UTF-8">
+        <meta charset='UTF-8'>
 
         {% block head %}
+            <title>Admin Foodfy</title>
         {% endblock %}
         
-        {% include "../parts/styles.njk" %}
+        {% include './parts/styles.njk' %}
     </head>
-    <body class="body-admin">
-        {% include "../parts/messages.njk" %}
 
-        <header class="header-admin">
-            <div class="links-admin">
+    <body>
+        {% include './parts/messages.njk' %}
 
-                <a href="/" ><img src="https://raw.githubusercontent.com/Rocketseat/bootcamp-launchbase-desafios-04/master/layouts/logo.png" alt="Foodfy logo"></a>
-                <a href="/admin/recipes">Receitas</a>
-                <a href="/admin/chefs">Chefs</a>
-                <a href="/admin/users">Usuários</a>
-                <form action="/logout" method="POST" id="logout">
-                    <button>Sair</button>
-                </form>
-
-            </div>
-        </header>
+        {% include './parts/header.njk' %}
 
         {% block content %}
         {% endblock %}
 
-        {% include "../parts/footer.njk" %}
+        <script type='text/javascript' src='../../scripts.js'></script>
     </body>
 </html>
