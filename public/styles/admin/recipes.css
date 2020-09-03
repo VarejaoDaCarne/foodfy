@@ -1,0 +1,51 @@
+.recipes-container .recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.recipes-container .recipes .item {
+    display: flex;
+}
+
+.recipes-container .recipe-image img {
+    width: 172px;
+    height: 80px;
+    border-radius: 8.5px;
+    object-fit: cover;
+}
+
+.recipes-container .recipe-info {
+    align-self: center;
+    margin-left: 15px;
+}
+
+    /* === RECIPES/CREATE/EDIT === */
+
+.recipes-container .fields .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipes-container .fields .item h3 {
+    align-self: flex-start;
+}
+
+.recipes-container .fields .item {
+    margin-bottom: 20px;
+}
+
+.recipes-container .fields .input + .input {
+    margin-top: 10px;
+}
+
+.recipes-container .fields .item .add-ingredient,
+.recipes-container .fields .item .add-prepare {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-alternative);
+    background: none;
+    align-self: flex-start;
+    margin: 15px 0;
+    cursor: pointer;
+}
