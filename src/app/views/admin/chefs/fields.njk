@@ -1,40 +1,38 @@
-<div class="input-wrapper" id="title">
-    <div><h2>Nome</h2></div>
-    <div>
+<div class='item'>
+    <h3>Nome</h3>
+    <div class='input'>
         <input 
-            type="text" 
-            name="name" 
-            placeholder="Coloque seu nome."
-            value="{{chef.name}}"
+            type='text' 
+            name='name' 
+            placeholder='Coloque seu nome.'
+            value='{{chef.name}}'
         >
     </div>
 </div>
 
-<div class="input-wrapper">
-    <div><h2>Avatar</h2></div>
-    <div>
-        <div id="photos-preview" class="photo-chef-preview">
-            {% if chef.src %}
-                <div class="photo" id="{{chef.file_id}}">
-                    <img src="{{chef.src}}" alt="{{chef.name}}">
-                    <i class="material-icons"
-                        onclick="PhotosUpload.removeOldPhoto(event)"
-                    >close</i>
-                </div>
-                
-                <input type="hidden" name="removed_files">
-            {% endif %}
-        </div>
+<div class='item'>
+    <h3>Avatar</h3>
+    <div id='photos-preview'>
+        {% if chef.src %}
+            <div class='photo' id='{{chef.file_id}}'>
+                <img src='{{chef.src}}' alt='Imagem de {{chef.name}}'>
+                <i class='material-icons'
+                    onclick='PhotosUpload.removeOldPhoto(event)'
+                >close</i>
+            </div>
+            
+            <input type='hidden' name='removed_files'>
+        {% endif %}
+    </div>
 
-        <div id="photos-upload">
-            <input 
-                id="photos-input"
-                type="file" 
-                name="photos" 
-                accept="image/*"
-                onchange="PhotosUpload.handleFileInputChefs(event)"
-            >
-            <p>Enviar Avatar</p>
-        </div>
+    <div id='photos-upload'>
+        <input 
+            id='photos-input'
+            type='file' 
+            name='photos' 
+            accept='image/*'
+            onchange='PhotosUpload.handleFileInput(event)'
+        >
+        <p class='button link'>Enviar Avatar</p>
     </div>
 </div>
