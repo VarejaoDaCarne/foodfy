@@ -1,8 +1,3 @@
-.about {
-    width: 940px;
-    margin: 0 auto;
-}
-
 .about h2 {
     font-size: 24px;
     margin: 20px 0;
@@ -11,6 +6,10 @@
 .about p {
     font-size: 18px;
     line-height: 28px;
-    color: var(--text-base);
+    color: var(--color-secondary-darker);
     margin-bottom: 20px;
+}
+
+.about div:last-child {
+    margin-bottom: 50px;
 }
