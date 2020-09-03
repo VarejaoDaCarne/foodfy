@@ -1,0 +1,55 @@
+.users-container .users {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.users-container .users .user-info {
+    margin-bottom: 20px;
+}
+
+.users-container .users .item h3{
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 28px;
+    color: var(--color-primary);
+}
+
+.users-container .users .item h4 {
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--color-secondary);
+}
+
+.users-container .users .item .actions {
+    display: flex;
+    align-items: baseline;
+}
+
+.users-container .users .item .actions a { 
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-alternative);
+    margin-right: 20px;
+}
+
+.users-container .users .item .actions form button {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-delete);
+    background: none;
+} 
+
+.users-container .users .item .actions form .button.remove { 
+    width: 0;
+    height: 0;
+}
+
+    /* === USERS REGISTER/SHOW === */
+
+.users-container .fields {
+    max-width: 940px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
