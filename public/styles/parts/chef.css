@@ -1,0 +1,37 @@
+.chef-details h1 {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.chef-details .banner {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+} 
+
+.chef-details .banner-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chef-details .chef-info {
+    text-align: center;
+}
+
+.chef-details .chef-info h2 {
+    font-size: 36px;
+    color: var(--color-primary);
+}
+
+.chef-details .chef-info h3 {
+    font-size: 20px;
+    font-weight: normal;
+    color: var(--color-secondary);
+}
+
+.chef-details .recipes h4 {
+    font-size: 24px;
+    color: var(--color-primary);
+}
