@@ -1,82 +1,39 @@
-.container.form form {
-    margin: 10% auto;
-    padding: 32px 24px;
+.session-container form {
+    width: 500px;
+    margin: 20% auto 0;
 }
 
-.container {
-    width: 90%;
-    max-width: 940px;
-    margin: 0 auto;
-}
-
-section.container.form  h3 {
-    display: flex;
-    justify-content: center;
+.session-container form h1 {
     font-size: 24px;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-form .body-home .input-wrapper > div:nth-child(1) {
-    font-weight: bold;
+.session-container .item + .item {
+    margin: 30px 0;
+}
+
+.session-container .item h3 {
     font-size: 16px;
+    color: var(--color-primary);
+    margin: 10px 0;
 }
 
-section form .input-wrapper .input {
-    width: 100%;
-    padding: 8px 0;
-    box-shadow: 2px 2px 2px -4px rgba(63, 63, 63, .9);
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-section.container form {
+.session-container .actions {
     display: flex;
-    flex-direction: column;
-}
-
-section.login.container,
-section.password.container {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-section.login.container .fields,
-section.password.container .fields{
-    margin-bottom: 5px;
-}
-
-section.login.container .footer ul {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30%;
-    align-items: center;
-}
-
-section.password.container.form .button {
-    width: 135px;
-    align-self: flex-end;
-}
-
-section.login.container form .button {
+    justify-content: space-between;
     align-items: flex-end;
-    padding: 15px 35px;
+    margin-top: 20px;
 }
 
-section.login.container .footer ul li{
-    justify-self: space-evenly;
-}
-
-section.login.container .footer ul li a {
-    color: #777;
-    text-decoration: none;
-}
-
-section.login.container .footer ul li a:hover {
-    color: black;
+.session-container .actions a {
+    justify-self: flex-start;
+    font-size: 16px;
     font-weight: bold;
+    color: var(--color-secondary-ligther);
 }
 
-.body-home .header-session {
-   max-width: 1200px;
-   margin: 30px auto 0;
+.session-container .actions.single {
+    justify-content: flex-end;
 }
