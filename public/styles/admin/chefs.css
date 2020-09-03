@@ -1,0 +1,5 @@
+.button.visualize { 
+    font-size: 14px;
+    background: none;
+    color: var(--color-alternative);
+}
