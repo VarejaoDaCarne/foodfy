@@ -1,7 +1,5 @@
-.home {
-    width: 940px;
+.container.home {
     height: 366px;
-    margin: 0 auto;
     background: #FBDFDB;
     border-radius: 30px;
     margin-bottom: 50px;
@@ -20,12 +18,14 @@
 
 .home .banner-info h1 { 
     font-size: 32px;
+    color: var(--color-primary);
     line-height: 42px;
 }
 
 .home .banner-info p {
     font-size: 18px;
     line-height: 28px;
+    color: var(--color-primary-darker);
     opacity: 0.7;
 }
 
