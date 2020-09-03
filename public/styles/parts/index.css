@@ -1,0 +1,102 @@
+:root {
+    --color-primary: #111111;
+    --color-primary-darker: #000000;
+    --color-secondary: #777777;
+    --color-secondary-darker: #444444;
+    --color-secondary-ligther: #999999;
+    --color-tertiary: #FFFFFF;
+    --color-tertiary-ligther: #EEEEEE;
+    --color-tertiary-darker: #DDDDDD;
+    --color-alternative: #6558C3;
+    --color-delete: #DC4747;
+    --color-cancel: #8A8A8A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-tertiary);
+}
+
+.container {
+    max-width: 940px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.links a {
+    font-size: 16px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.links a:hover {
+    font-weight: bold;
+}
+
+.input input,
+.item textarea,
+.item select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--color-tertiary-darker);
+    border-radius: 4px;
+}
+
+form .item textarea {
+    resize: none;
+}
+
+.button {
+    width: 135px;
+    height: 37px;
+    background: var(--color-alternative);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-tertiary);
+    cursor: pointer;
+}
+
+.button.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipes h1 {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.recipes .recipe-info h2  {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--text-in-primary);
+}
+
+.recipes .recipe-info h3 {
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: normal;
+    color: var(--color-secondary);
+}
