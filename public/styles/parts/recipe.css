@@ -1,15 +1,10 @@
-.recipe {
-    max-width: 940px;
-    margin: 0 auto;
-}
-
     /* === GALLERY === */
 
-.recipe .gallery {
+.recipe-details .gallery {
     width: 100%;
 }
 
-.recipe .gallery .highlight > img {
+.recipe-details .gallery .highlight > img {
     width: 100%;
     height: 280px;
     object-fit: cover;
@@ -18,7 +13,7 @@
     cursor: zoom-in;
 }
 
-.recipe .gallery-preview {
+.recipe-details .gallery-preview {
     display: grid;
     grid-template-columns: repeat(5, 50px);
     gap: 15px;
@@ -26,22 +21,22 @@
     margin-top: 10px;
 }
 
-.recipe .gallery-preview img {
+.recipe-details .gallery-preview img {
     height: 50px;
     width: 50px;
-    border: 1px solid var(--color-border-primary);
+    border: 1px solid var(--color-tertiary-ligther);
     border-radius: 3.5px;
     object-fit: cover;
     cursor: pointer;
     transition: 200ms;
 }
 
-.recipe .gallery-preview img:hover,
-.recipe .gallery-preview img.active {
+.recipe-details .gallery-preview img:hover,
+.recipe-details .gallery-preview img.active {
     opacity: 0.5;
 }
 
-.recipe .highlight .lightbox-target {
+.recipe-details .highlight .lightbox-target {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -54,24 +49,24 @@
     transition: opacity 400ms;
 }
 
-.recipe .highlight .lightbox-target img {
+.recipe-details .highlight .lightbox-target img {
     margin: auto;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: var(--color-background);
+    background-color: var(--color-tertiary-darker);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
     width: 90%;
     height: 90%;
     object-fit: contain;
 }
 
-.recipe .highlight a.lightbox-close {
+.recipe-details .highlight a.lightbox-close {
     width: 50px;
     height: 50px;
-    background: var(--color-background);
+    background: var(--color-tertiary-darker);
     position: absolute;
     top: -80px;
     right: 0;
@@ -83,61 +78,62 @@
 
     /* === RECIPE DETAILS === */
 
-.recipe .recipe-info {
+.recipe-details .recipe-info {
    text-align: center;
    margin: 20px 0;
 }
 
-.recipe .recipe-info h1 {
+.recipe-details .recipe-info h1 {
     font-size: 36px;
-    color: var(--text-in-primary);
+    color: var(--color-primary);
 }
 
-.recipe .recipe-info p {
+.recipe-details .recipe-info p {
     font-size: 20px;
-    color: var(--text-info);
+    color: var(--color-secondary);
 }
 
-.recipe .text-wrapper {
+.recipe-details .text-wrapper {
     display: flex;
     align-items: baseline;
 }
 
-.recipe .text-wrapper h2 {
+.recipe-details .text-wrapper h2 {
     font-size: 24px;
-    color: var(--text-in-primary);
+    color: var(--color-primary);
 }
 
-.recipe .text-wrapper h3 {
+.recipe-details .text-wrapper h3 {
     margin-left: 10px;
     font-size: 12px;
-    color: var(--text-info-darker);
+    color: var(--color-secondary-ligther);
+    cursor: pointer;
 }
 
-.recipe .details-container ul {
+.recipe-details .details-container ul {
     margin: 20px 0;
 }
 
-.recipe .details-container li {
+.recipe-details .details-container li {
     font-size: 18px;
-    color: var(--text-base);
+    color: var(--color-secondary-darker);
     line-height: 28px;
     margin-left: 20px;
 }
 
-.recipe .item + .item {
+.recipe-details .item + .item {
     margin-top: 40px;
 }
 
    /* === TOGGLE === */
 
-.recipe .item.toggle ul {
+.recipe-details .item.toggle ul {
     opacity: 1;
     visibility: initial;
     height: 100%;
 }   
 
-.recipe .item.active ul {
+.recipe-details .item.active ul {
     opacity: 0;
     visibility: hidden;
     height: 0;
