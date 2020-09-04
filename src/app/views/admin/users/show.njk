@@ -9,7 +9,7 @@
         <div class='upper-wrapper grid'>
             <h1>Atualizar Usuário</h1>
 
-            <form method='POST' action='/admin/users?_method=DELETE'>
+            <form method='POST' action='/admin/users?_method=DELETE' id='form-delete'>
                 <input type='hidden' name='id' value={{user.id}}>
 
                 <button class='button delete' type='submit'>Deletar</button>
@@ -30,6 +30,4 @@
             >
         </form>   
     </section>
-
-    {% include '../parts/confirm.njk' %}
 {% endblock %}
