@@ -9,7 +9,7 @@
         <div class='upper-wrapper grid'>
             <h1>Editando chef: {{chef.name}}</h1>
 
-            <form method='POST' action='/admin/chefs?_method=DELETE'>
+            <form method='POST' action='/admin/chefs?_method=DELETE' id='form-delete'>
                 <input type='hidden' name='id' value={{chef.id}}>
 
                 <button class='button delete' type='submit'>Deletar</button>
@@ -28,6 +28,4 @@
             >
         </form>   
     </section>
-
-    {% include '../parts/confirm.njk' %}
 {% endblock %}
