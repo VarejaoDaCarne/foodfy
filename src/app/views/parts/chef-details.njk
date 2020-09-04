@@ -1,9 +1,8 @@
-{% macro details(title, classes, chefs) %}
+{% import './recipes-list.njk' as show %}
+
+{% macro render(chef, recipes, class) %}
     <main class='container chef-details'>
-        <div class='upper-wrapper'>
-            <h1>Chef: {{chef.name}}</h1>
-        </div>
-        
+        {{ caller() }}
         <div class='banner'>
             <div class='banner-img'>
                 <img 
@@ -14,16 +13,14 @@
         </div>
 
         <div class='chef-info'>
-            <h2>Julia Kinito{{chef.name}}</h2>
-            <h3>4 receitas{{chefs.total_recipes}}</h3> 
+            <h2>{{chef.name}}</h2>
+            <h3>{{chefs.total_recipes}}</h3> 
         </div>
-
-        <div class='recipes'>
-            <h4>Receitas</h4>
-
-            {% for recipe in recipes %}
-                {# section recipes under construction #}
-            {% endfor %}
+    
+    {% call show.render('recipes-container', recipes, 'admin/recipes') %}
+        <div class='upper-wrapper'>
+            <h1>Receitas</h1>  
         </div>
+    {% endcall %}
     </main>
 {% endmacro %}
