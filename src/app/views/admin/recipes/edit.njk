@@ -9,7 +9,7 @@
         <div class='upper-wrapper grid'>
             <h1>Editando receita</h1>
         
-            <form method='POST' action='/admin/recipes?_method=DELETE'>
+            <form method='POST' action='/admin/recipes?_method=DELETE' id='form-delete'>
                 <input type='hidden' name='id' value={{recipe.id}}>
 
                 <button class='button delete' type='submit'>Deletar</button>
@@ -19,7 +19,7 @@
                 <button class='button' type='submit' form='form-edit'>Salvar receita</button>
         </div>
 
-            <div class="fields">
+            <div class='fields'>
                 {% include 'admin/recipes/fields.njk' %}
             </div>
 
@@ -30,6 +30,4 @@
             >
         </form>   
     </section>
-
-    {% include '../parts/confirm.njk' %}
 {% endblock %}
