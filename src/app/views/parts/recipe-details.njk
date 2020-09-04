@@ -51,7 +51,7 @@
                 <p>por {{recipe.chef_name}}</p> 
             </div>
 
-            <div class='item toggle'>
+            <div class='item toggle' >
                 <div class='text-wrapper'>                    
                     <h2>Ingredientes</h2>
                     <h3 >ESCONDER</h3>
@@ -67,10 +67,10 @@
             <div class='item toggle'>
                 <div class='text-wrapper'>                    
                     <h2>Modo de preparo</h2>
-                    <h3>ESCONDER</h3>
+                    <h3  >ESCONDER</h3>
                 </div>
 
-                <ul >
+                <ul>
                     {% for preparation in recipe.preparation %}
                         <li>{{preparation}}</li>
                     {% endfor %}
