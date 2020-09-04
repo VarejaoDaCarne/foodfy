@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% call show.render(chefs, 'see', '') %}
+    {% call show.render(chefs, 'landing', '/chefs') %}
     {% endcall %}
 
     {% if chefs.recipeIndex %}
