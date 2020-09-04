@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% call show.render(chefs, 'total-recipes', 'admin/chefs') %}
+    {% call show.render(chefs, 'admin', '/admin/chefs') %}
         <div class='upper-wrapper'>
             <h1>Gerenciar chefs</h1>
             <a class='button link' href='/admin/chefs/create'>Novo</a>
