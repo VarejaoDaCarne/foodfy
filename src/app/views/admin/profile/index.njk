@@ -1,27 +1,29 @@
-{% extends "../layout.njk" %}
+{% extends '../layout.njk' %}
 
 {% block head %}
-    <title>{{user.name}} - Admin Foodfy</title>
+    <title>Admin Foodfy - {{user.name}}</title>
 {% endblock %}
 
 {% block content %}
-    <section class="edit-wrapper" id="user-register-upper">
-        <div class="edit-upper-wrapper" id="button-upper-profile">
-            <h1>Bem Vindo {{user.name}}</h1>
+    <section class='container users-container'>
+        <div class='upper-wrapper'>
+            <h1>Bem vindo {{user.name}}</h1>
 
-            <form method="POST" action="/admin/profile?_method=PUT">
-                <button type="submit" id="user-edit-button">Salvar</button>
+            <form method='POST' action='/admin/profile?_method=PUT'>
+                <button class='button' type='submit'>Salvar</button>
         </div>
 
+            <div class='fields'>
                 {% include 'admin/profile/profile-fields.njk' %}
-        
-                <input 
-                    type="hidden" 
-                    name="id" 
-                    value={{user.id}}
-                >
-            </form>   
+            </div>
+    
+            <input 
+                type='hidden' 
+                name='id' 
+                value={{user.id}}
+            >
+        </form>   
     </section>
 
-    {% include 'confirm.njk' %}
+    {% include '../parts/confirm.njk' %}
 {% endblock %}
