@@ -35,7 +35,7 @@ module.exports = {
             console.error(error)
         }
     },
-    async paginate(params) {
+    async search(params) {
         try {
             const { filter } = params
 
