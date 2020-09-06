@@ -35,6 +35,39 @@ module.exports = {
             console.error(error)
         }
     },
+    async paginate(params) {
+        try {
+            const { filter } = params
+
+            let query = "",
+                filterQuery = `WHERE`,
+                results
+    
+            filterQuery = `
+                ${filterQuery}
+                recipes.title ILIKE '%${filter}%'
+            `
+    
+            totalQuery = `(
+                SELECT count(*) FROM recipes
+                ${filterQuery}
+            ) AS total`
+    
+            query = `
+                SELECT recipes.*, ${totalQuery}, chefs.name AS chef_name
+                FROM recipes
+                LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+                ${filterQuery}
+                ORDER BY updated_at DESC 
+            `
+
+            results = await db.query(query)
+
+            return results.rows
+        } catch (error) {
+            console.error(error)
+        }
+    },
     async delete(id) {
         try{
             await db.query(`
