@@ -1,0 +1,27 @@
+<!DOCTYPE njk>
+
+<html>
+    <head>
+        <meta charset='UTF-8'>
+
+       {% block head %}
+            <title>Sessão Foodfy</title>
+        {% endblock %}
+
+        {% include '../parts/styles.njk' %}
+    </head>
+    <body class='body-session'>
+        {% include '../parts/messages.njk' %}
+
+        <header class='header-session'>
+            <div class='logo'>
+                <a href='/'><img src='https://raw.githubusercontent.com/Rocketseat/bootcamp-launchbase-desafios-02/master/layouts/assets/logo.png' alt='Foodfy logo'></a>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+        <script src='../../../scripts.js'></script>
+    </body>
+</html>
