@@ -13,6 +13,14 @@ body {
     color: var(--color-primary);
 }
 
+.links a:hover {
+    font-weight: bold;
+}
+
+.links a.active {
+    font-weight: bold;
+}
+
 .filter-form {
     gap: 15px;
     display: flex;
