@@ -1,41 +1,38 @@
-{% extends "../layout.njk" %}
+{% extends '../layout.njk' %}
 
 {% block head %}
-    <title>Usuários - Admin Foodfy</title>
+    <title>Admin Foodfy - Usuários</title>
 {% endblock %}
 
 {% block content %}
-    <section id="section-admin">
-        <div class="upper-wrapper" id="upper-wrapper-button">
+    <section class='container users-container'>
+        <div class='upper-wrapper'>
             <h1>Usuários</h1>
-            <a href="/admin/users/register" id="admin-create-button">Novo</a>
+            <a class='button link' href='/admin/users/register'>Novo</a>
         </div>
-        <div class="chefs__container" id="users-grid">
+
+        <div class='users'>
             {% for user in users %}
-                <article class="chef__container" > 
-                    <div class="chef-text__container">
-
+                <div class='item' > 
+                    <div class='user-info'>
                         <h3>{{user.name}}</h3>
-                        <p>{{user.email}}</p>
-
-                        <div class="edit-remove-users">
-                            {% if not user.is_admin and user.id == userId %}
-                                <a href="/admin/profile/{{user.id}}" class="receipt__content-see">Editar</a>
-                            {% else %}
-                                <a href="/admin/users/{{user.id}}" class="receipt__content-see">Editar</a>
-                            {% endif %}
-                            
-                            <form method="POST" action="/admin/users?_method=DELETE" id="form-delete">
-                                <input type="hidden" name="id" value={{user.id}}>
-
-                                <button type="submit" id ="delete-users-list">Remover</button>
-                            </form>
-                        </div>
+                        <h4>{{user.email}}</h4>
                     </div>
-                </article>
+
+                    <div class='actions'>
+                        {% if not user.is_admin and user.id == userId %}
+                            <a href='/admin/profile/{{user.id}}'>Editar</a>
+                        {% else %}
+                            <a href='/admin/users/{{user.id}}'>Editar</a>
+                        {% endif %}
+
+                        <form method='POST' action='/admin/users?_method=DELETE' id='form-delete'>
+                            <input type='hidden' name='id' value={{user.id}}>
+                            <button class='button remove' type='submit'>Remover</button>
+                        </form>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </section>
-    
-    {% include 'confirm.njk' %}
 {% endblock %}
