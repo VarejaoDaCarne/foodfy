@@ -58,7 +58,7 @@ module.exports = {
             const chef = await LoadChefService.load('chef', req.params.id )
 
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
-
+            console.log(recipes)
             return res.render('admin/chefs/show', { chef , recipes })       
         } catch (error) {
             console.error(error)
