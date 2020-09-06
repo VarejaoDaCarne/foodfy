@@ -2,24 +2,25 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 10px 0px;
-    gap: 50px;
+    gap: 20px;
 }
 
 .chefs-list .item {
     display: flex;
+    
     margin: 20px 0;
 }
 
 .chefs-list .chef-image img  {
-    width: 90px;
-    height: 90px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .chefs-list .chef-info {
     align-self: center;
-    margin: 0 20px;
+    margin-left: 10px;
 }
 
 .chefs-list .chef-info h2 {
@@ -38,12 +39,14 @@
 
     /* === HIDE === */
 
-.chefs .chef-info.total-recipes h3 {
+.chefs-list.admin .chef-info h3 {
     display: none;
 }
 
-.chefs .chef-info.see a {
+.chefs-list.admin .chef-image a {
+    pointer-events: none;
+}
+
+.chefs-list.landing .chef-info a {
     display: none;
-    overflow: hidden;
-    opacity: 0;
 }
