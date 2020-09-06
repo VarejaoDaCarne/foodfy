@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% call show.render(chef, 'hide') %}
+    {% call show.render(chef, recipes, 'hide') %}
         <div class='upper-wrapper'>
             <h1>Chef: {{chef.name}}</h1>
             <a class='button link' href='/admin/chefs/{{chef.id}}/edit'>Editar chef</a>
