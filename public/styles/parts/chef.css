@@ -6,10 +6,10 @@
 .chef-details .banner {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    margin-bottom: 50px;
 } 
 
-.chef-details .banner-img {
+.chef-details .banner-img img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
