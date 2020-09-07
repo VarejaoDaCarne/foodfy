@@ -1,170 +1,101 @@
-const buttons = document.querySelectorAll(".show-hide")
-const menuItems = document.querySelectorAll("header a")
-const ingredientAdd = document.querySelector(".add-ingredient")
-const prepareAdd = document.querySelector(".add-prepare")
-const pagination = document.querySelector(".pagination")
-const currentPage = location.pathname
+    /* === HEADER PAGE ACTIVE === */
 
-if(buttons) {
-    for(let button of buttons) {
-        const subtitles = button.querySelectorAll("h2")
-        for(let subtitle of subtitles) {
-            subtitle.addEventListener("click", function() {
-                if(button.classList.contains("toggle")) {
-                    button.classList.add("active")
-                    button.classList.remove("toggle")
-                    subtitle.innerHTML = "MOSTRAR"
-                }else if(button.classList.contains("active")) {
-                    button.classList.add("toggle")
-                    button.classList.remove("active")
-                   subtitle.innerHTML = "ESCONDER"
-                }
-            })
-        }
+const currentPage = location.pathname;
+const menuItems = document.querySelectorAll('header .links a');
+
+for (const item of menuItems) {
+    if (currentPage.includes(item.getAttribute('href'))) {
+        item.classList.add('active');
+    }
+}
+   
+   /* === SHOW/HIDE === */
+
+const toggles = document.querySelectorAll('.toggle')
+
+if(toggles) {
+    for(let toggle of toggles) {
+        const action = toggle.querySelector('h3')
+
+        action.addEventListener('click', function() {
+            if(action.innerHTML == 'ESCONDER') {
+                toggle.classList.add('active')
+                action.innerHTML = 'MOSTRAR'
+            } else {
+                toggle.classList.remove('active')
+                action.innerHTML = 'ESCONDER'
+            }
+        })
     }
 }
 
-function addIngredient() {
-    const ingredients = document.querySelector("#ingredients")
-    const fieldContainer = document.querySelectorAll(".ingredient")
-  
-    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
-  
-    if (newField.children[0].value == "") return false
-  
-    newField.children[0].value = ""
-    ingredients.appendChild(newField)
-  }
+    /* === ADD FIELDS === */
 
-if(ingredientAdd) {
-    ingredientAdd.addEventListener("click", addIngredient) 
+const ingredientAdd = document.querySelector('.add-ingredient')
+
+function cloneIngredientField() {
+    const ingredients = document.querySelector('#ingredients')
+    const ingredientField = document.querySelectorAll('.ingredient')
+    const newIngredient = ingredientField[ingredientField.length - 1].cloneNode(true)
+      
+    if (newIngredient.children[0].value == '') return false
+
+    newIngredient.children[0].value = ''
+    ingredients.appendChild(newIngredient)
 }
 
-function addPrepare() {
-    const prepare = document.querySelector("#preparation")
-    const fieldContainer = document.querySelectorAll(".prepare")
+if(ingredientAdd) {
+    ingredientAdd.addEventListener('click', cloneIngredientField) 
+}
+
+const prepareAdd = document.querySelector('.add-prepare')
+
+function clonePrepareField() {
+    const prepareField = document.querySelectorAll('.prepare')
+    const newPrepare = prepareField[prepareField.length - 1].cloneNode(true)
   
-    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+    if (newPrepare.children[0].value == '') return false
   
-    if (newField.children[0].value == "") return false
-  
-    newField.children[0].value = ""
-    prepare.appendChild(newField)
+    newPrepare.children[0].value = ''
+    document.querySelector('#preparation').appendChild(newPrepare)
   }
 
 if(prepareAdd) {
-    prepareAdd.addEventListener("click", addPrepare)
+    prepareAdd.addEventListener('click', clonePrepareField)
 }
 
-for(item of menuItems) {
-    if(currentPage.includes(item.getAttribute("href"))) {
-        item.classList.add("active")
-    }
-}
+    /* === DELETE CONFIRMATION === */
 
-function paginate(selectedPage, totalPages) {
+const formDelete = document.querySelector('#form-delete')
 
-    let 
-    pages = [],
-    oldPage
-
-    for(let currentPage = 1; currentPage <= totalPages; currentPage++) {
-        
-        const firstAndLastPage = currentPage == 1 || currentPage == totalPages
-        const pagesAfterSelectedPage = currentPage <= selectedPage + 2
-        const pagesBeforeSelectedPage = currentPage >= selectedPage - 2
-
-        if(firstAndLastPage || pagesBeforeSelectedPage && pagesAfterSelectedPage) {
-            if(oldPage && currentPage - oldPage > 2) {
-                pages.push("...")
-            }
-
-            if(oldPage && currentPage - oldPage == 2) {
-                pages.push(oldPage + 1)
-            }
-            
-            pages.push(currentPage)
-            
-            oldPage = currentPage
+if(formDelete) {
+    formDelete.addEventListener('submit', event => {
+        const confirmation = confirm('Tem certeza que deseja deletar?')
+        if(!confirmation) {
+            event.preventDefault()
         }
-    }
-
-    return pages
+    })
 }
 
-function createPagination(pagination) {
-
-    const filter = pagination.dataset.filter
-    const page = +pagination.dataset.page
-    const total = +pagination.dataset.total
-    const pages = paginate(page, total)
-    
-    let elements = ""
- 
-    for(let page of pages) {
-        if(String(page).includes("...")) {
-            elements += `<span>${page}</span>`
-        }else {
-            if(filter) {
-                elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`
-            }else {
-                elements += `<a href="?page=${page}">${page}</a>`
-            }
-        }
-    }
-
-    if(!pages[0]) alert(`Filter: ${filter}, not found!`)
-
-    pagination.innerHTML = elements
-}
-
-if(pagination) {
-    createPagination(pagination)
-}
+    /* === PHOTOS UPLOAD === */
 
 const PhotosUpload = {
-    input: "",
+    input:'',
     preview: document.querySelector('#photos-preview'),
-    uploadLimit: 5,
+    uploadLimit: '',
     files: [],
-    handleFileInputChefs(event) {
+    handleFileInput(event, limit) {
         const { files: fileList } = event.target
         PhotosUpload.input = event.target
-
-        if(PhotosUpload.chefHasLimit(event)) {
-            PhotosUpload.updateInputFiles()
-            return
-        }
-
-        Array.from(fileList).forEach(file => {
-            PhotosUpload.files.push(file)
-
-            const reader = new FileReader()
-
-            reader.onload = () => {
-                const image = new Image()
-                image.src = String(reader.result)
-
-                const div = PhotosUpload.getContainer(image)
-                PhotosUpload.preview.appendChild(div)
-            }
-
-            reader.readAsDataURL(file)
-        })
-
-        PhotosUpload.updateInputFiles()
-    },
-    handleFileInputRecipes(event) {
-        const { files: fileList } = event.target
-        PhotosUpload.input = event.target
+        PhotosUpload.uploadLimit = limit
 
         if(PhotosUpload.hasLimit(event)) {
             PhotosUpload.updateInputFiles()
+            
             return
         } 
 
         Array.from(fileList).forEach(file => {
-            
             PhotosUpload.files.push(file)
 
             const reader = new FileReader()
@@ -185,8 +116,7 @@ const PhotosUpload = {
     hasLimit(event) {
         const { uploadLimit, input, preview } = PhotosUpload
         const { files: fileList} = input
-
-
+        
         if(fileList.length > uploadLimit) {
             alert(`Envie no máximo ${uploadLimit} fotos`)
             event.preventDefault()
@@ -195,45 +125,20 @@ const PhotosUpload = {
 
         const photosDiv = []
         preview.childNodes.forEach( item => {
-            if(item.classList && item.classList.value == "photo")
+            if(item.classList && item.classList.value == 'photo')
             photosDiv.push(item)
         })
 
         const totalPhotos = fileList.length + photosDiv.length
         if(totalPhotos > uploadLimit) {
-            alert("Você atingiu o limite máximo de fotos")
-            event.preventDefault()
-            return true
-        }
-        return false
-    },
-    chefHasLimit(event) {
-        const { input, preview } = PhotosUpload
-        const { files: fileList} = input
-
-
-        if(fileList.length > 1) {
-            alert(`Envie no máximo ${1} fotos`)
-            event.preventDefault()
-            return true
-        }
-
-        const photosDiv = []
-        preview.childNodes.forEach( item => {
-            if(item.classList && item.classList.value == "photo")
-            photosDiv.push(item)
-        })
-
-        const totalPhotos = fileList.length + photosDiv.length
-        if(totalPhotos > 1) {
-            alert("Você atingiu o limite máximo de fotos")
+            alert('Você atingiu o limite máximo de fotos')
             event.preventDefault()
             return true
         }
         return false
     },
     getAllFiles() {
-        const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
+        const dataTransfer = new ClipboardEvent('').clipboardData || new DataTransfer()
 
         PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
     
@@ -242,18 +147,15 @@ const PhotosUpload = {
     getContainer(image) {
         const div = document.createElement('div')
         div.classList.add('photo')
-
         div.onclick =  PhotosUpload.removePhoto
-
         div.appendChild(image)
-
         div.appendChild(PhotosUpload.getRemoveButton())
         return div
     },
     getRemoveButton() {
         const button = document.createElement('i')
         button.classList.add('material-icons')
-        button.innerHTML = "close"
+        button.innerHTML = 'close'
         return button
     },
     removePhoto(event) {
@@ -273,8 +175,8 @@ const PhotosUpload = {
         const photoDiv = event.target.parentNode
 
         if(photoDiv.id) {
-            const removedFiles = document.querySelector('input[name="removed_files"]')
-
+            const removedFiles = document.querySelector('input[name="removed_files"')
+            
             if(removedFiles) {
                 removedFiles.value += `${photoDiv.id},`
             }
@@ -287,8 +189,10 @@ const PhotosUpload = {
     }
 }
 
+    /* === IMAGE GALLERY === */
+
 const ImageGallery = {
-    highlight: document.querySelector('.banner-container .receipt__image > img'),
+    highlight: document.querySelector('.gallery .highlight > img'),
     previews: document.querySelectorAll('.gallery-preview img'),
     setImage(e) {
         const { target } = e
@@ -313,11 +217,13 @@ const Lightbox = {
     },
     close() {
         Lightbox.target.style.opacity = 0
-        Lightbox.target.style.top = "-100%"
-        Lightbox.target.style.bottom = "initial"
-        Lightbox.closeButton.style.top = "-80px"
+        Lightbox.target.style.top = '-100%'
+        Lightbox.target.style.bottom = 'initial'
+        Lightbox.closeButton.style.top = '-80px'
     }
 }
+
+    /* === VALIDATES === */
 
 const Validate = {
     apply(input, func) {
@@ -338,7 +244,7 @@ const Validate = {
         input.focus()
     },
     clearErrors(input) {
-        const errorDiv = input.parentNode.querySelector(".error")
+        const errorDiv = input.parentNode.querySelector('.error')
 
         if(errorDiv)
             errorDiv.remove()
@@ -349,7 +255,7 @@ const Validate = {
         const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
             if(!value.match(mailFormat)) {
-                error = "Email inválido"
+                error = 'Email inválido'
             }
 
         return {
