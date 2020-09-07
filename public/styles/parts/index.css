@@ -48,8 +48,8 @@ body {
     cursor: pointer;
 }
 
-.links a:hover {
-    font-weight: bold;
+.upper-wrapper {
+    margin: 30px 0;
 }
 
 .input input,
@@ -61,7 +61,7 @@ body {
     border-radius: 4px;
 }
 
-form .item textarea {
+textarea {
     resize: none;
 }
 
