@@ -27,6 +27,19 @@
     flex-direction: column;
 }
 
+.recipes-container .fields .photos-container {
+    display: flex;
+}
+
+
+.recipes-container .fields  #photos-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 90%;
+    margin-left: 10px;
+}
+
 .recipes-container .fields .item h3 {
     align-self: flex-start;
 }
