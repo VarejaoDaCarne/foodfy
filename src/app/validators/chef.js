@@ -63,7 +63,7 @@ module.exports = {
     async delete(req, res, next) {
         try {
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
-            console.log(recipes)
+
             if (recipes) {
                 return res.render('admin/chefs/edit', {
                     chef: req.body,
