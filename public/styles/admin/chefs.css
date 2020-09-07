@@ -3,3 +3,12 @@
     background: none;
     color: var(--color-alternative);
 }
+
+.chefs-container  #photos-preview {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.chefs-container .button.link {
+    width: 150px;
+}
