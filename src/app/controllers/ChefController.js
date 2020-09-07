@@ -40,10 +40,11 @@ module.exports = {
                 })
             )
     
-            const chef = await Promise.all(chefPromise)
-            
-            return res.render('admin/chefs/show', { 
-                chef,
+            await Promise.all(chefPromise)
+
+            const chefs = await LoadChefService.load('chefs')
+            return res.render('admin/chefs/index', { 
+                chefs,
                 success: 'Chefe criado com sucesso'
             })
         } catch(error) {
@@ -58,7 +59,7 @@ module.exports = {
             const chef = await LoadChefService.load('chef', req.params.id )
 
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
-            console.log(recipes)
+
             return res.render('admin/chefs/show', { chef , recipes })       
         } catch (error) {
             console.error(error)
@@ -106,10 +107,11 @@ module.exports = {
                 await Promise.all(removedFilesPromise)        
             }
             
-            const chef = await Chef.update(req.body.id, { name: req.body.name } )
+            await Chef.update(req.body.id, { name: req.body.name } )
 
-            return res.render('admin/chefs/edit', { 
-                chef, 
+            const chefs = await LoadChefService.load('chefs')
+            return res.render('admin/chefs/index', { 
+                chefs, 
                 success: 'Chefe atualizado com sucesso'
             }) 
         }catch(error) {
