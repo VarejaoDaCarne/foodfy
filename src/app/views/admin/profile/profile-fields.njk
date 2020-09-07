@@ -1,39 +1,38 @@
-<div id="cards">
-    <div class="input-wrapper" id="title">
-        <div><h2>Nome</h2></div>
-        <div>
-            <input 
-                type="text" 
-                name="name" 
-                placeholder="Digite o nome completo"
-                value="{{user.name}}"
-                required
-            >
-        </div>
-    </div>
-
-    <div class="input-wrapper">
-        <div><h2>Email</h2></div>
-        <div class="input">
-            <input 
-                type="email" 
-                name="email" 
-                value="{{user.email}}"
-                placeholder="Digite o email"
-                onblur="Validate.apply(this, 'isEmail')"
-            >
-        </div>
-    </div>
-
-    <div class="input-wrapper">
-        <div id="password"><h2>Senha</h2></div>
-        <div>
-            <input 
-                type="password" 
-                name="password" 
-                placeholder="Digite sua senha"
-            >
-        </div>
+<div class='item'>
+    <h3>Nome</h3>
+    <div class='input'>
+        <input 
+            type='text' 
+            name='name' 
+            placeholder='Digite o nome completo'
+            value='{{user.name}}'
+            required
+        >
     </div>
 </div>
+
+<div class='item'>
+    <h3>Email</h3>
+    <div class='input'>
+        <input 
+            type='email' 
+            name='email' 
+            value='{{user.email}}'
+            placeholder='Digite o email'
+            onblur='Validate.apply(this, 'isEmail')'
+        >
+    </div>
+</div>
+
+<div class='item'>
+    <h3>Senha</h3>
+    <div class='input'>
+        <input 
+            type='password' 
+            name='password' 
+            placeholder='Digite sua senha'
+        >
+    </div>
+</div>
+
 
