@@ -1,6 +1,15 @@
+.header-session .logo {
+    margin: 40px 0;
+}
+
+.header-session .logo  a{
+    display: flex;
+    justify-content: center;
+}
+
 .session-container form {
     width: 500px;
-    margin: 20% auto 0;
+    margin: 100px auto ;
 }
 
 .session-container form h1 {
