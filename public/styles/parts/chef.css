@@ -22,11 +22,13 @@
 
 .chef-details .chef-info h2 {
     font-size: 36px;
+    line-height: 36px;
     color: var(--color-primary);
 }
 
 .chef-details .chef-info h3 {
     font-size: 20px;
+    line-height: 20px;
     font-weight: normal;
     color: var(--color-secondary);
 }
