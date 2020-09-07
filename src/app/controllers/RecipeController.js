@@ -59,9 +59,10 @@ module.exports = {
             )
                
             await Promise.all(recipeFilesPromise)
-            
-            return res.render(`admin/recipes/show`, {
-                recipe,
+
+            const recipes = await LoadRecipeService.load('recipes')
+            return res.render(`admin/recipes/index`, {
+                recipes,
                 success: 'Receita criada com sucesso'
             })
         } catch(error) {
@@ -74,7 +75,7 @@ module.exports = {
     async show(req, res) {
         try {
             const recipe =  await LoadRecipeService.load('recipe', req.params.id)
-      
+            
             return res.render('admin/recipes/show', { recipe })
         } catch (error) {
             console.error(error)
@@ -88,7 +89,7 @@ module.exports = {
             const recipe =  await LoadRecipeService.load('recipe', req.params.id)
       
             const chefOptions =  await Chef.findAll()
-
+            console.log(recipe)
             return res.render('admin/recipes/edit', { recipe, chefOptions })
         } catch (error) {
             console.error(error)
@@ -128,7 +129,7 @@ module.exports = {
                 await Promise.all(removedFilesPromise)        
             }
             
-            const recipe = await Recipe.update(req.body.id, { 
+            await Recipe.update(req.body.id, { 
                 chef_id: chef,
                 title,
                 ingredients,
@@ -136,8 +137,10 @@ module.exports = {
                 information
             })     
 
+            const recipes = await LoadRecipeService.load('recipes')
+
             return res.render(`admin/recipes/index`, {
-                recipe,
+                recipes,
                 success: 'Receita atualizada com sucesso'
             })
         }catch(error) {
