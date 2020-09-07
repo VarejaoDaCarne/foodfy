@@ -16,8 +16,9 @@
 .recipe-details .gallery-preview {
     display: grid;
     grid-template-columns: repeat(5, 50px);
+    grid-auto-flow: dense;
     gap: 15px;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 10px;
 }
 
@@ -30,6 +31,12 @@
     cursor: pointer;
     transition: 200ms;
 }
+
+.recipe-details .gallery-preview img:nth-child(1) { grid-column-start: 5;}
+.recipe-details .gallery-preview img:nth-child(2) { grid-column-start: 4;}
+.recipe-details .gallery-preview img:nth-child(3) { grid-column-start: 3;}
+.recipe-details .gallery-preview img:nth-child(4) { grid-column-start: 2;}
+.recipe-details .gallery-preview img:nth-child(5) { grid-column-start: 1;}
 
 .recipe-details .gallery-preview img:hover,
 .recipe-details .gallery-preview img.active {
@@ -56,7 +63,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: var(--color-tertiary-darker);
+    background-color: var(--color-tertiary);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
     width: 90%;
     height: 90%;
@@ -66,7 +73,7 @@
 .recipe-details .highlight a.lightbox-close {
     width: 50px;
     height: 50px;
-    background: var(--color-tertiary-darker);
+    background: var(--color-tertiary);
     position: absolute;
     top: -80px;
     right: 0;
@@ -119,6 +126,7 @@
     color: var(--color-secondary-darker);
     line-height: 28px;
     margin-left: 20px;
+    list-style-type: symbols();
 }
 
 .recipe-details .item + .item {
@@ -127,14 +135,15 @@
 
    /* === TOGGLE === */
 
-.recipe-details .item.toggle ul {
+.recipe-details .toggle ul {
     opacity: 1;
     visibility: initial;
     height: 100%;
 }   
 
-.recipe-details .item.active ul {
+.recipe-details .active ul {
     opacity: 0;
     visibility: hidden;
     height: 0;
+    margin: 0;
 }  
