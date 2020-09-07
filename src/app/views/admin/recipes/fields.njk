@@ -8,7 +8,7 @@
                 name='photos' 
                 accept='image/*'
                 multiple
-                onchange='PhotosUpload.handleFileInput(event)'
+                onchange='PhotosUpload.handleFileInput(event, 5)'
             >
             <i class='material-icons'>add</i>
         </div>
@@ -22,9 +22,8 @@
                         onclick='PhotosUpload.removeOldPhoto(event)'
                     >close</i>
                 </div>
-                
-                <input type='hidden' name='removed_files'>
             {% endfor %}
+            <input type='hidden' name='removed_files'>
         </div>
     </div>
 </div>
