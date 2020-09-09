@@ -7,10 +7,8 @@ const Recipe = require('./src/app/models/Recipe')
 const RecipeFile = require('./src/app/models/RecipeFile')
 const User = require('./src/app/models/User')
 
-const { chefs: dataChefs, recipes: dataRecipes } = require('./data.json')
-
 let usersIds = [], chefsIds = [], recipesIds = [], recipeFilesIds = []
-const totalRecipeFiles = 30
+const totalRecipeFiles = 6
 const totalChefs = 6
 const totalRecipes = 6
 const totalUsers = 3
@@ -38,24 +36,25 @@ async function createUsers() {
 
 async function createChefs() {
     try {
-        let chefs = [], files = [], filesIds = [], i = 0
+        let chefs = [], files = [], filesIds = [], i = 1
 
         while(files.length < totalChefs) {
              files.push({
                  name: faker.image.image(),
-                 path:`https://source.unsplash.com/collection/8470962/${Math.round(Math.random() * 100)}`
+                 path:`public/images/chef-${i}.jpg`
              })
+
+            i++
         }
      
         const filesPromise = files.map(file => File.create(file))
         filesIds = await Promise.all(filesPromise)
      
-         while(chefs.length < totalChefs) {
+         for(let i = 0; chefs.length < totalChefs; i++) {
              chefs.push({
                  name: faker.name.findName(),
                  file_id: filesIds[i]
              })
-             i++
          }
      
          const chefsPromise = chefs.map(chef => Chef.create(chef))
@@ -67,7 +66,7 @@ async function createChefs() {
 
 async function createRecipes() {
     try {
-        let recipes = [], files = []
+        let recipes = [], files = [], i = 1
 
         while (recipes.length < totalRecipes) {
             recipes.push({
@@ -86,8 +85,10 @@ async function createRecipes() {
         while(files.length < totalRecipeFiles) {
             files.push({
                 name: faker.image.image(),
-                path: `https://source.unsplash.com/collection/345760/${Math.round(Math.random() * 100)}`
+                path: `public/images/recipe-${i}.png`
             })
+
+            i++
         }
     
         const filesPromise = files.map(file => File.create(file))
@@ -101,21 +102,11 @@ async function createRecipeFiles() {
     try {
         let recipeFiles = []
 
-        while(recipeFiles.length < 20) {
+        for(let i = 0; recipeFiles.length < totalRecipeFiles; i++) {
             recipeFiles.push({
-                recipe_id: recipesIds[Math.round(Math.random() * recipesIds.length)],
-                file_id: recipeFilesIds[Math.round(Math.random() * recipeFilesIds.length)]
+                recipe_id: recipesIds[i],
+                file_id: recipeFilesIds[i]
             })
-
-            for (let i = 0; i < totalRecipes; i++) {
-                let tot = 0
-                const lim = 5
-                
-                recipeFiles.forEach(file => {
-                    if (file.file_id == i) tot++
-                    if (tot > lim) recipeFiles.splice(recipeFiles.indexOf(file),1)
-                })
-            }
         }
     
         const recipeFilesPromise = recipeFiles.map(file => RecipeFile.create(file))
