@@ -6,7 +6,8 @@ const LoadChefService = require('../services/LoadChefService')
 module.exports = {
     async index(req, res) {
         try {
-            const recipes = await LoadRecipeService.load('recipes')
+            const allRecipes = await LoadRecipeService.load('recipes')
+            const recipes = allRecipes.filter((recipe, index) => index > 5 ? false : true)
 
             return res.render('home/index', { recipes })
         } catch (error) {
@@ -59,9 +60,9 @@ module.exports = {
     async chef(req, res) {
         try {
             const chef = await LoadChefService.load('chef', req.params.id )
-            console.log(chef)
+
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
-            console.log(recipes)
+
             return res.render('home/chef', { chef , recipes })       
         } catch (error) {
             console.error(error)
