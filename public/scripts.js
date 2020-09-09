@@ -3,9 +3,11 @@
 const currentPage = location.pathname;
 const menuItems = document.querySelectorAll('header .links a');
 
-for (const item of menuItems) {
-    if (currentPage.includes(item.getAttribute('href'))) {
-        item.classList.add('active');
+if(menuItems) {
+    for (const item of menuItems) {
+        if (currentPage.includes(item.getAttribute('href'))) {
+            item.classList.add('active');
+        }
     }
 }
    
@@ -34,13 +36,14 @@ if(toggles) {
 const ingredientAdd = document.querySelector('.add-ingredient')
 
 function cloneIngredientField() {
-    const ingredients = document.querySelector('#ingredients')
+    const ingredients =  document.querySelector('#ingredients')
     const ingredientField = document.querySelectorAll('.ingredient')
     const newIngredient = ingredientField[ingredientField.length - 1].cloneNode(true)
-      
+
     if (newIngredient.children[0].value == '') return false
 
     newIngredient.children[0].value = ''
+    console.log(newIngredient.children[0].value)
     ingredients.appendChild(newIngredient)
 }
 
