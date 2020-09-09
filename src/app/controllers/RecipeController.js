@@ -89,7 +89,7 @@ module.exports = {
             const recipe =  await LoadRecipeService.load('recipe', req.params.id)
       
             const chefOptions =  await Chef.findAll()
-            console.log(recipe)
+
             return res.render('admin/recipes/edit', { recipe, chefOptions })
         } catch (error) {
             console.error(error)
