@@ -18,9 +18,9 @@ module.exports = {
     },
     logout(req, res) {
         try {
-            req.session.destroy()
+            session.destroy()
 
-            return res.redirect('/login')    
+            return res.redirect('admin/session/login')    
         } catch (error) {
             console.log(error)
         }
@@ -59,14 +59,11 @@ module.exports = {
                 `,
             })
 
-            return res.render('admin/session/forgot-password', {
+            return res.render('admin/session/password-forgot', {
                 success: 'Cheque seu email para resetar sua senha'
             })
         }catch(error) {
             console.log(error)
-            return res.render('admin/session/forgot-password', {
-                error: 'Algo deu errado, tente novamente'
-            })
         }
     },
     async reset(req, res) {
@@ -82,17 +79,12 @@ module.exports = {
                 reset_token_expires: ''
             })
 
-            return res.render('session/login', {
+            return res.render('admin/session/login', {
                 user : req.body,
                 success: 'Senha atualizada! Logue.'
             })
         }catch(error) {
             console.log(error)
-            return res.render('session/password-reset', {
-                user: req.body,
-                token,
-                error: 'Algo deu errado, tente novamente'
-            })
         }
     }
 }
