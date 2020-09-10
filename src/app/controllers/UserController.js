@@ -45,10 +45,6 @@ module.exports = {
             })
         }catch(error) {
             console.log(error)
-            return res.render('admin/users/show', {
-                user: req.body,
-                error: 'Algo deu errado'
-            })
         }
     },
     async list(req, res) {
@@ -93,10 +89,6 @@ module.exports = {
             })
         }catch(error) {
             console.log(error)
-            return res.render('admin/users/show', {
-                user: req.body,
-                error: 'Algo deu errado'
-            })
         }
     },
     async delete(req, res) {
@@ -111,10 +103,6 @@ module.exports = {
             })
         }catch(error) {
             console.error(error)
-            return res.render('admin/users/show', {
-                user: req.body,
-                error: 'Algo deu errado'
-            })
         }
     }
 }
