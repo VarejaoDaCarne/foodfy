@@ -1,8 +1,13 @@
-.header-session .logo {
-    margin: 40px 0;
+.header-session  {
+    width: 100%;
 }
 
-.header-session .logo  a{
+.header-session .logo {
+    width: 91px;
+    margin: 40px auto;
+}
+
+.header-session .logo a{
     display: flex;
     justify-content: center;
 }
