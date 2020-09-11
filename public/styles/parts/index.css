@@ -38,7 +38,7 @@ body {
     margin: 0 auto;
 }
 
-.logo {
+.logo a {
     cursor: pointer;
 }
 
