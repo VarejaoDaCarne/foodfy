@@ -97,6 +97,8 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	```bash
 	node seed.js
 	```
+	
+*Importante: Se executar o arquivo seed.js, cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta public/imagens vão ser excluidas. Então, reponha as imagens excluídas, senão ao rodar o seed.js novamente irá faltar imagens podendo quebrar a aplicacão. Você encontrará imagens na pasta public/assets, copie a que desejar para a pasta public/imagens e renomeie para o mesmo nome da imagem apagada.*
 
 6. Execute a aplicação 
 
@@ -106,7 +108,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 
 #### A aplicação será aberta na porta:3000 - acesse *http://localhost:3000*
 
-#### Importante: Se executar o arquivo *seed.js*, cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta *public/imagens* vão ser excluidas. Então, reponha as imagens excluídas, caso ao contrário ao rodar o *seed.js* novamente irá faltar imagens podendo quebrar a aplicacão. Você encontrará imagens na pasta *public/assets*, copie a que desejar para a pasta *public/imagens* e renomeie para o mesmo nome da imagem apagada.
+
 
 ---
 
