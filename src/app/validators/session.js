@@ -1,5 +1,4 @@
 const { compare } = require('bcryptjs')
-
 const User = require('../models/User')
 
 async function login(req, res, next) {
@@ -8,26 +7,23 @@ async function login(req, res, next) {
 
         const user = await User.findOne({ where: {email} })
     
-        if(!user) return res.render('session/login', {
+        if(!user) return res.render('admin/session/login', {
             user: req.body,
-            error: 'Usuário não registrado'
+            error: 'Usuário não registrado.'
         })
 
-        // const passed = await compare(password, user.password)
+        const passed = await compare(password, user.password)
 
-        // if(!passed) return res.render('session/login', {
-        //     user: req.body,
-        //     error: 'Senha incorreta.'
-        // })''
+        if(!passed) return res.render('admin/session/login', {
+            user: req.body,
+            error: 'Senha incorreta.'
+        })
     
         req.user = user
         
         next()
     }catch(error) {
         console.error(error)
-        return res.render('session/login', {
-            error: 'Algo deu errado'
-        })
     }
 }
 
@@ -38,9 +34,9 @@ async function forgot(req, res, next) {
         let user = await User.findOne({ where: { email }})
     
         if(!user) 
-            return res.render('session/forgot-password', {
+            return res.render('admin/session/password-forgot', {
                 user: req.body,
-                error: 'Email não registrado'
+                error: 'Email não registrado.'
             })
 
         req.user = user
@@ -48,10 +44,6 @@ async function forgot(req, res, next) {
         next()
     }catch(error) {
         console.error(error)
-        return res.render('session/forgot-password', {
-            user: req.body,
-            error: 'Algo deu errado'
-        })
     }
 }
 
@@ -62,34 +54,34 @@ async function reset(req, res, next) {
         const user = await User.findOne({ where: { email }} )
     
         if(!user) 
-            return res.render('session/password-reset', {
+            return res.render('admin/session/password-reset', {
                 user: req.body,
                 token,
-                error: 'Usuário não registrado'
+                error: 'Usuário não registrado.'
             })
     
         if(password != passwordRepeat) 
-            return res.render('session/password-reset', {
+            return res.render('admin/session/password-reset', {
                 user: req.body,
                 token,
-                error: 'Senhas não correspondem'
+                error: 'Senhas não correspondem.'
             })
     
         if(token != user.reset_token) 
-            return res.render('session/password-reset', {
+            return res.render('admin/session/password-reset', {
                 user: req.body,
                 token,
-                error: 'Token inválido! Tente novamente'
+                error: 'Token inválido! Tente novamente.'
             })
     
         let now = new Date()
         now = now.setHours(now.getHours())
     
         if(now > user.reset_token_expires) 
-            return res.render('session/password-reset', {
+            return res.render('admin/session/password-reset', {
                 user: req.body,
                 token,
-                error: 'Token expirou! Solicite o formulário de resetar a senha novamente'
+                error: 'Token expirou! Solicite o formulário de resetar a senha novamente.'
             })
     
         req.user = user
@@ -97,11 +89,6 @@ async function reset(req, res, next) {
         next()
     } catch (error) {
         console.error(error)
-        return res.render('session/password-reset', {
-            user: req.body,
-            token,
-            error: 'Algo deu errado'
-        })
     }
 }
 
