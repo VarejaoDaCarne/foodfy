@@ -30,15 +30,11 @@ function isLoggedRedirectToProfile(req, res, next) {
 }
 
 async function ownerOfRecipeOrAdmin(req, res, next) {
-    let { userId: id } = req.session
+    const { userId } = req.session
 
-    const user = await User.findOne({ 
-        where: { id }
-    })
+    const recipe = await Recipe.find(req.params.id || req.body.id)
 
-    const recipe = await Recipe.find(req.params.id)
-
-    if(!user.is_admin && recipe.user_id != user.id) {
+    if(!req.session.admin && recipe.user_id != userId) {
         req.session.error ='Você só pode modificar suas receitas.' 
         return res.redirect(`/admin/recipes`)
     }
