@@ -5,36 +5,48 @@ const User = require('../models/User')
 
 module.exports = {
     loginForm(req, res) {
-        return res.render('admin/session/login')
+        const { error, success } = req.session
+        req.session.error = ''
+        req.session.success = ''
+
+        return res.render('admin/session/login', { error, success })
     },
     async login(req, res) {
         try {
             req.session.userId = req.user.id
-        
-            return res.redirect('admin/users')
+            req.session.admin = req.user.is_admin
+            
+            return res.redirect(`admin/profile/${req.session.userId}`)
         } catch (error) {
             console.log(error)
+            return res.render('admin/profile/index', {
+                error: 'Algo deu errado.'
+            })
         }
     },
     logout(req, res) {
         try {
-            session.destroy()
+            req.session.destroy()
 
-            return res.redirect('admin/session/login')    
+            return res.redirect('/login')    
         } catch (error) {
             console.log(error)
         }
     },
     forgotForm(req, res) {
-        return res.render('admin/session/password-forgot')
+        const { error, success } = req.session
+        req.session.error = ''
+        req.session.success = ''
+
+        return res.render('admin/session/password-forgot', { error, success  })
     },
     resetForm(req, res) {
-        return res.render('admin/session/password-reset', { token: req.query.token})
+        return res.render('admin/session/password-reset', { token: req.query.token })
     },
     async forgot(req, res) {
         try{
             const user = req.user
-            
+
             const token = crypto.randomBytes(20).toString('hex')
 
             let now = new Date()
@@ -58,19 +70,20 @@ module.exports = {
                 </p>
                 `,
             })
-
-            return res.render('admin/session/password-forgot', {
-                success: 'Cheque seu email para resetar sua senha'
-            })
+            
+            req.session.success = 'Cheque seu email para resetar sua senha.'
+            return res.redirect('/password-forgot')
         }catch(error) {
             console.log(error)
+            return res.render('admin/session/password-forgot', {
+                error: 'Algo deu errado.'
+            })
         }
     },
     async reset(req, res) {
-        const user  = req.user
-        const {  password, token } = req.body
-
         try{
+            const user  = req.user
+            const {  password, token } = req.body
             const newPassword = await hash(password, 8)
 
             await User.update(user.id, {
@@ -79,12 +92,13 @@ module.exports = {
                 reset_token_expires: ''
             })
 
-            return res.render('admin/session/login', {
-                user : req.body,
-                success: 'Senha atualizada! Logue.'
-            })
+            req.session.success = 'Senha atualizada.'
+            return res.redirect('/login')
         }catch(error) {
             console.log(error)
+            return res.render('admin/session/password-reset', {
+                error: 'Algo deu errado.'
+            })
         }
     }
 }
