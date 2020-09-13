@@ -13,11 +13,13 @@ async function getImages(chefId) {
 }
 
 async function format(chef) {
-  const files = await getImages(chef.id)
-  chef.src = files[0].src
-  chef.image = files
-  
-  return chef
+  if(chef) {
+    const files = await getImages(chef.id)
+    chef.src = files[0].src
+    chef.image = files
+    
+    return chef
+  }
 }
 
 const LoadService = {
