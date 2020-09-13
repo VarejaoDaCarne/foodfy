@@ -89,7 +89,7 @@ const Base = {
 
             Object.keys(fields).map(key => {
                 if (Array.isArray(fields[key])) {
-                    values.push(`${key} = '{"${fields[key].join('","')}"}'`)
+                    values.push(`${key} = '{"${fields[key].join(' "," ')}"}'`)
                 } else {
                     values.push(`${key} = '${fields[key]}'`)
                 }
