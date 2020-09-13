@@ -1,36 +1,43 @@
 <div class='item'>
     <h3>Email</h3>
-    <div class='input' {% if error %}class='error'{% endif %}>
+    <div class='input' >
         <input 
             type='email' 
             name='email' 
             value='{{user.email}}'
             placeholder='Digite seu email'
             onblur='Validate.apply(this, 'isEmail')'
+            {% if error %}class='error'{% endif %}
         >
     </div>
 </div>
 
 <div class='item'>
     <h3>Senha</h3>
-    <div class='input' {% if error %}class='error'{% endif %}>
+    <div class='input'>
         <input 
             type='password' 
             name='password' 
             placeholder='Digite sua senha'
+            {% if error %}class='error'{% endif %}
         >
     </div>
 </div>
 
-{% if token%}
+{% if token %}
     <div class='item'>
         <h3>Repetição de Senha</h3>
-        <div class='input' {% if error %}class='error'{% endif %}>
+        <div class='input'>
             <input 
                 type='password' 
                 name='passwordRepeat' 
                 placeholder='Repita a nova senha'
+                {% if error %}class='error'{% endif %}
             >
         </div>
     </div>
 {% endif %}
+
+<div>
+    <input type="hidden" name="token" value={{token}}>
+</div>
