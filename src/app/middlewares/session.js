@@ -2,57 +2,53 @@ const User = require('../models/User')
 const Recipe = require('../models/Recipe')
 
 function onlyUsers(req, res, next) {
-    if(!req.session.userId)
-        return res.redirect('/login')
+    if(!req.session.userId) {
+        return res.render('admin/session/login', {
+            error: 'Somente usuários podem ver está seção.'
+        })
+    }
 
     next()
 }
 
-function isLoggedRedirectToUsers(req, res, next) {
-    if(req.session.userId)
-        return res.redirect('admin/users')
+async function onlyAdmin(req, res, next) {
+    if(!req.session.admin) {
+        req.session.error = 'Somente administradores podem fazer está ação.'
+        return res.redirect(`/admin/users`)
+    }
 
     next()
 }
 
-async function onlyOneOwnRecipeOrAdmin(req, res, next) {
+function isLoggedRedirectToProfile(req, res, next) {
+    if(req.session.userId) {
+        req.session.error = 'Você já está logado no sistema.'
+        return res.redirect(`/admin/profile/${req.session.userId}`)
+    }
+
+    next()
+}
+
+async function ownerOfRecipeOrAdmin(req, res, next) {
     let { userId: id } = req.session
 
     const user = await User.findOne({ 
         where: { id }
     })
 
-    let recipe = await Recipe.find(req.params.id)
+    const recipe = await Recipe.find(req.params.id)
 
-    if(!user.is_admin && recipe != id)
-        return res.render(`admin/profile/index`, {
-            user: user,
-            error: "Apenas administrador ou a sua própria conta" 
-        })
-
-    next()
-}
-
-async function onlyUserOrAdmin(req, res, next) {
-    let { userId: id } = req.session
-
-    const user = await User.findOne({ 
-        where: { id }
-    })
-
-    if(!user.is_admin && req.params.id != user.id) 
-        return res.render(`admin/profile/index`, {
-            user: user,
-            error: "Apenas administrador ou a sua própria conta" 
-        })
+    if(!user.is_admin && recipe.user_id != user.id) {
+        req.session.error ='Você só pode modificar suas receitas.' 
+        return res.redirect(`/admin/recipes`)
+    }
 
     next()
-
 }
 
 module.exports = {
     onlyUsers,
-    isLoggedRedirectToUsers,
-    onlyOneOwnRecipeOrAdmin,
-    onlyUserOrAdmin
+    onlyAdmin,
+    isLoggedRedirectToProfile,
+    ownerOfRecipeOrAdmin,
 }
