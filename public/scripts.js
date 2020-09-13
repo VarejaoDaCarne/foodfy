@@ -31,19 +31,17 @@ if(toggles) {
     }
 }
 
-    /* === ADD FIELDS === */
-
 const ingredientAdd = document.querySelector('.add-ingredient')
 
 function cloneIngredientField() {
     const ingredients =  document.querySelector('#ingredients')
     const ingredientField = document.querySelectorAll('.ingredient')
     const newIngredient = ingredientField[ingredientField.length - 1].cloneNode(true)
-
+    
     if (newIngredient.children[0].value == '') return false
 
+    console.log( newIngredient.children[0].value)
     newIngredient.children[0].value = ''
-    console.log(newIngredient.children[0].value)
     ingredients.appendChild(newIngredient)
 }
 
@@ -58,7 +56,7 @@ function clonePrepareField() {
     const newPrepare = prepareField[prepareField.length - 1].cloneNode(true)
   
     if (newPrepare.children[0].value == '') return false
-  
+    console.log(newPrepare)
     newPrepare.children[0].value = ''
     document.querySelector('#preparation').appendChild(newPrepare)
   }
