@@ -67,24 +67,24 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 #### Clone este repositório
 
 ```bash
-$ git clone https://github.com/grioos/foodfy
+git clone https://github.com/grioos/foodfy
 ```
 
 1- Acesse a pasta do projeto no seu vscode
 
 ```bash
-$ cd foodfy
+cd foodfy
 ```
 2- Instale as dependências
 
 ```bash
-$ npm i
+npm i
 ```
 
 3- Configure o Banco de dados (PostgreSQL) executando os comandos presente no arquivo database.sql.
 
 ```bash
-$ CREATE TABLE "" (
+CREATE TABLE "" (
     "id" SERIAL PRIMARY KEY,
     "name" TEXT,
     "number" int NOT NULL
@@ -94,13 +94,13 @@ $ CREATE TABLE "" (
 4- Execute o arquivo seed.js para popular o banco de dados.
 
 ```bash
-$ node seed.js
+node seed.js
 ```
 
 5- Execute a aplicação 
 
 ```bash
-$ npm start
+npm start
 ```
 
 `A aplicação será aberta na porta:5000 - acesse http://localhost:5000`
