@@ -1,3 +1,4 @@
+const { hash } = require('bcryptjs')
 const crypto = require('crypto')
 const mailer = require('../../lib/mailer')
 const User = require('../models/User')
@@ -9,16 +10,15 @@ module.exports = {
     async post(req, res) {
         try {
             const password = crypto.randomBytes(5).toString('hex')
+            const newPassword = await hash(password, 8)
 
             if(req.body.is_admin == undefined)
                 req.body.is_admin = false
   
-            const userId = await User.create({
+            await User.create({
                 ...req.body,
-                password: password,
+                password: newPassword,
             })
-
-            req.session.userId = userId
 
             await mailer.sendMail({
                 to: req.body.email,
@@ -37,72 +37,79 @@ module.exports = {
                 </p>
                 `,
             })
-            
-            req.session.destroy()
 
-            return res.render('admin/session/login', {
-                success: 'Conta criada com sucesso'
-            })
+            req.session.success = 'Conta criada com sucesso.'
+            return res.redirect('/admin/users')
         }catch(error) {
             console.log(error)
+            return res.render('admin/users/register', {
+                error: 'Algo deu errado.'
+            })
         }
     },
     async list(req, res) {
         try {
-            let users = await User.findAll()
+            const users = await User.findAll()
 
-            const { userId: id } = req.session
-    
-            return res.render('admin/users/index', { users, userId: id })
+            const { error, success } = req.session
+            req.session.error = ''
+            req.session.success = ''
+
+            return res.render('admin/users/index', { users, error, success })
         } catch (error) {
             console.log(error)
+            return res.render('admin/users/index', { 
+                error: 'Algo deu errado.'
+            })
         }
     },
     async show(req, res) {
         try {
-            const { user } = req
-    
-            return res.render('admin/users/show', { user })
+            const { user, session: {error, success} } = req
+            req.session.error = ''
+            req.session.success = ''
+
+            return res.render('admin/users/show', { user, error, success })
         } catch (error) {
             console.log(error)
+            return res.render('admin/users/show', { 
+                error: 'Algo deu errado.'
+            })
         }
     },
     async put(req, res) {
         try {
-            const { user } = req
             let { name, email, is_admin } = req.body
 
             if(is_admin == null) 
                 is_admin = false
             
-            await User.update(user.id, {
+            await User.update(req.body.id, {
                 name,
                 email,
                 is_admin
             })
 
-            const users = await User.findAll()
-
-            return res.render('admin/users/index', {
-                users,
-                success: 'Conta atualizada com sucesso'
-            })
+            req.session.success = 'Conta atualizada com sucesso.'
+            return res.redirect(`/admin/users/${req.body.id}`)
         }catch(error) {
             console.log(error)
+            return res.render('admin/users/show', {
+                error: 'Algo deu errado.'
+            })
         }
     },
     async delete(req, res) {
         try {
             await User.delete(req.body.id)
 
-            users = await User.findAll()
-
-            return res.render('admin/users/index', {
-                users,
-                success: 'Conta deletada com sucesso'
-            })
+            req.session.success = 'Conta deletada com sucesso'
+            return res.redirect('/admin/users')
         }catch(error) {
             console.error(error)
+            return res.render('admin/users/show', {
+                error: 'Algo deu errado.'
+            })
         }
     }
 }
