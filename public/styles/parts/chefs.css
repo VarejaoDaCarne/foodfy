@@ -2,12 +2,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 10px 0px;
-    gap: 20px;
+    gap: 12px;
 }
 
 .chefs-list .item {
     display: flex;
-    
     margin: 20px 0;
 }
 
