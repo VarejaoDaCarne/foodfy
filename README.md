@@ -104,7 +104,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm start
 	```
 
-#### A aplicação será aberta na porta:5000 - acesse http://localhost:5000
+#### A aplicação será aberta na porta:5000 - acesse *http://localhost:5000*
 
 Obs: Tome Cuidado ao excluir as entidades, pois a grande maioria das imagens serão compartilhadas entre si, caso exclua algum chefe, usuário ou receita, reponha uma imagem como padrão no caminho public/images/recipes-and-chefs/, sendo chefs.jpg para chefes e recipes.png para receitas.
 
