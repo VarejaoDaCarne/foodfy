@@ -7,28 +7,39 @@ function checkAllFields(body) {
        if(body[key] == '' && key != 'removed_files')  {
             return {
                 chef: body,
-                error: 'Por favor, preencha todos os campos'
+                error: 'Por favor, preencha todos os campos.'
             }
        }
     }
 }
   
 module.exports = {
+   async show(req, res, next) {
+        try {
+            const chef = await LoadChefService.load('chef', req.params.id )
+    
+            if(!chef) {
+                req.session.error = 'Chefe não encontrado.'
+                return res.redirect('/admin/chefs')
+            }
+    
+            next()
+        } catch (error) {
+            console.error(error)
+        }
+    },
     post(req, res, next) {
         try {
             const fillAllFields = checkAllFields(req.body)
 
             if (fillAllFields) {
-                return res.render('admin/chefs//create', {
-                    chef: req.body,
-                    error: 'Todos os campos devem ser preenchidos!',
-                })
+                return res.render('admin/chefs//create', fillAllFields)
             }
     
             if (req.body.removed_files != '' && req.files[0] == undefined) {
                 return res.render('admin/chefs/create', {
                     chef: req.body,
-                    error: 'Ao menos uma imagem deve ser enviada'
+                    error: 'Ao menos uma imagem deve ser enviada.'
                 })
             }
             
@@ -41,17 +52,14 @@ module.exports = {
         try {
             const fillAllFields = checkAllFields(req.body)
 
-            if (fillAllFields) {
-                return res.render('admin/chefs/edit', {
-                    chef: req.body,
-                    error: 'Todos os campos devem ser preenchidos!',
-                })
-            }
+            if (fillAllFields) 
+                return res.render('admin/chefs/edit', fillAllFields)
+            
     
             if (req.body.removed_files != '' && req.files[0] == undefined) {
                 return res.render('admin/chefs/edit', {
                     chef: req.body,
-                    error: 'Ao menos uma imagem deve ser enviada'
+                    error: 'Ao menos uma imagem deve ser enviada.'
                 })
             }
             
@@ -62,12 +70,13 @@ module.exports = {
     },
     async delete(req, res, next) {
         try {
+            const chef = await LoadChefService.load('chef', req.body.id )
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
 
-            if (recipes) {
+            if (recipes.length != 0 ) {
                 return res.render('admin/chefs/edit', {
-                    chef: req.body,
-                    error: 'Chefe com receita não pode ser deletado',
+                    chef,
+                    error: 'Chefe com receita não pode ser deletado.',
                 })
             }
     
