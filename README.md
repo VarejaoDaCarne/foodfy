@@ -98,7 +98,6 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	node seed.js
 	```
 	
-*Importante: Se executar o arquivo seed.js, cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta public/imagens vão ser excluidas. Então, reponha as imagens excluídas, senão ao rodar o seed.js novamente irá faltar imagens podendo quebrar a aplicacão. Você encontrará imagens na pasta public/assets, copie a que desejar para a pasta public/imagens e renomeie para o mesmo nome da imagem apagada.*
 
 6. Execute a aplicação 
 
@@ -109,6 +108,16 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 *A aplicação será aberta na porta:3000 - acesse *http://localhost:3000*
 
 
+
+### 📌 Importante
+
+- A senha do usúarios criado com o *seed.js* são **123**
+
+- Se executar o arquivo *seed.js*, tome cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta *public/imagens* vão ser excluidas. Então, reponha as imagens excluídas com novas. Você encontrará imagens na pasta *public/assets*, copie a que desejar para a pasta *public/imagens* e **renomeie para o mesmo nome da imagem apagada**.
+
+- Limpe o banco de dados antes de popular novamente com a *seed.js*, comandos para limpar no arquivo ***database.sql***
+
+- Configure o mailtrap no arquivo *mailer.js*, **colocando suas credenciais**.
 
 ---
 
