@@ -7,7 +7,7 @@ function checkAllFields(body) {
        if(body[key] == '')  {
             return {
                 user: body,
-                error: 'Por favor, preencha todos os campos'
+                error: 'Por favor, preencha todos os campos.'
             }
        }
     }
@@ -28,17 +28,13 @@ async function post(req, res, next) {
         if(user) {
             return res.render('admin/users/register', {
                 user: req.body,
-                error: 'Usuário já cadastrado'
+                error: 'Usuário já cadastrado.'
             })
         }
      
         next()
     } catch (error) {
         console.error(error)
-        return res.render('admin/users/register', {
-            user: req.body,
-            error: 'Algo deu errado'
-        })
     }
 }
 
@@ -48,45 +44,39 @@ async function show(req, res, next) {
 
         const user = await User.findOne({ where: { id }} )
 
-        if(!user) return res.render('admin/user/index', {
-            error: 'Usuário não encontrado'
-        })
-    
+        if(!user) {
+            req.session.error = 'Usuário não encontrado.'
+            return res.redirect('/admin/users')
+        }
+
         req.user = user
-    
+
         next()
     } catch (error) {
         console.error(error)
-        return res.render('admin/user/index', {
-            error: 'Algo deu errado'
-        })
     }
 }
 
 async function update(req, res, next) {
     try {
-        const { id } = req.body
+        const { email } = req.body
 
-        const user = await User.findOne({ where: {id} })
+        const user = await User.findOne({ where: {email} })
     
         const fillAllFields = checkAllFields(req.body)
-        if(fillAllFields) {
-            if(!user.is_admin){
-                return res.render('admin/profile/index', fillAllFields)
-            }else {
-                return res.render('admin/users/show', fillAllFields)
-            }
+        if(fillAllFields) 
+            return res.render('admin/users/show', fillAllFields)
+    
+        if(user.email == req.body.email && user.id != req.body.id) {
+            return res.render('admin/users/show', {
+                user: req.body,
+                error: 'Email já está sendo utilizado.'
+            })
         }
-    
-        req.user = user
-    
+
         next()
     } catch (error) {
         console.error(error)
-        return res.render('admin/profile/index', {
-            user: req.body,
-            error: 'Algo deu errado'
-        })
     }
 }
 
@@ -96,10 +86,10 @@ async function remove(req, res, next) {
 
         const user = await User.findOne({ where: {id} })
      
-        if(user.is_admin && user.id == req.session.userId)
+        if(user.id == req.session.userId)
             return res.render('admin/users/show', {
                 user: user,
-                error: 'Você não pode deletar sua própria conta'
+                error: 'Não é possível deletar a sua própria conta.'
             })
     
         next()
