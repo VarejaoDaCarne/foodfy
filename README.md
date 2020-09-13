@@ -106,7 +106,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm start
 	```
 
-#### A aplicação será aberta na porta:3000 - acesse *http://localhost:3000*
+*A aplicação será aberta na porta:3000 - acesse *http://localhost:3000*
 
 
 
