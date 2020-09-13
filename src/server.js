@@ -9,6 +9,7 @@ const server = express()
 server.use(session)
 server.use((req, res, next) => {
     res.locals.session = req.session
+
     next()
 })
 
