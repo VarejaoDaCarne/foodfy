@@ -16,7 +16,7 @@ module.exports = {
             req.session.userId = req.user.id
             req.session.admin = req.user.is_admin
             
-            return res.redirect(`admin/profile/${req.session.userId}`)
+            return res.redirect(`/admin/profile/${req.session.userId}`)
         } catch (error) {
             console.log(error)
             return res.render('admin/profile/index', {
@@ -25,15 +25,13 @@ module.exports = {
         }
     },
     logout(req, res) {
-        try {
-            req.session.destroy()
+        req.session.destroy()
 
-            return res.redirect('/login')    
-        } catch (error) {
-            console.log(error)
-        }
+        return res.redirect('/login')
     },
     forgotForm(req, res) {
+        req.session.destroy()
+
         const { error, success } = req.session
         req.session.error = ''
         req.session.success = ''
