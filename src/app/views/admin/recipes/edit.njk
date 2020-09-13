@@ -15,10 +15,11 @@
                 <button class='button delete' type='submit'>Deletar</button>
             </form>
 
-            <form method='POST' action='/admin/recipes?_method=PUT' id='form-edit' enctype='multipart/form-data'>
-                <button class='button' type='submit' form='form-edit'>Salvar receita</button>
+            <button class='button' type='submit' form='form-edit'>Salvar receita</button>  
         </div>
-
+        
+        <form method='POST' action='/admin/recipes?_method=PUT' id='form-edit' enctype='multipart/form-data'>
+           
             <div class='fields'>
                 {% include 'admin/recipes/fields.njk' %}
             </div>
