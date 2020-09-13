@@ -64,23 +64,49 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 
 #### 🧭 Rodando a aplicação
 
-```bash
+1. Clone este repositório
 
-# Clone este repositório
-$ git clone https://github.com/grioos/foodfy
+	```bash
+	git clone https://github.com/grioos/foodfy
+	```
 
-# Acesse a pasta do projeto no seu vscode
-$ cd foodfy
+2. Acesse a pasta do projeto no seu *vscode*
 
-# Instale as dependências
-$ npm i
+	```bash
+	cd foodfy
+	```
 
-# Execute a aplicação 
-$ npm start
+3. Instale as dependências
 
-# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+	```bash
+	npm i
+	```
 
-```
+4. Configure o Banco de dados (*PostgreSQL*) executando os comandos presente no arquivo database.sql.
+
+	```bash
+	CREATE TABLE "" (
+	    "id" SERIAL PRIMARY KEY,
+	    "name" TEXT,
+	    "number" int NOT NULL
+	);
+	```
+
+5. Execute o arquivo *seed.js* para popular o banco de dados.
+
+	```bash
+	node seed.js
+	```
+
+6. Execute a aplicação 
+
+	```bash
+	npm start
+	```
+
+#### A aplicação será aberta na porta:5000 - acesse *http://localhost:5000*
+
+Obs: Tome Cuidado ao excluir as entidades, pois a grande maioria das imagens serão compartilhadas entre si, caso exclua algum chefe, usuário ou receita, reponha uma imagem como padrão no caminho public/images/recipes-and-chefs/, sendo chefs.jpg para chefes e recipes.png para receitas.
 
 ---
 
@@ -91,6 +117,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Connect Pg Simple](https://github.com/voxpelli/node-connect-pg-simple)**
 -   **[Express](https://expressjs.com/)**
 -   **[Express Session](https://github.com/expressjs/session)**
+-   **[Faker](https://www.npmjs.com/package/faker)**
 -   **[Method Override](https://www.npmjs.com/package/method-override)**
 -   **[Multer](https://www.npmjs.com/package/multer)**
 -   **[Nodemailer](https://github.com/nodemailer/nodemailer)**
