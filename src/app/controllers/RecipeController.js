@@ -7,9 +7,13 @@ const LoadRecipeService = require('../services/LoadRecipeService')
 module.exports = {
     async index(req, res) {
         try {
+            const { error, success  } = req.session
+            req.session.error = ''
+            req.session.succes = ''
+      
             const recipes = await LoadRecipeService.load('recipes')
 
-            return res.render('admin/recipes/index', { recipes })
+            return res.render('admin/recipes/index', { recipes, error, success })
         } catch (error) {
             console.error(error)
             return res.render(`admin/recipes/index`, {
@@ -60,11 +64,8 @@ module.exports = {
                
             await Promise.all(recipeFilesPromise)
 
-            const recipes = await LoadRecipeService.load('recipes')
-            return res.render(`admin/recipes/index`, {
-                recipes,
-                success: 'Receita criada com sucesso'
-            })
+            req.session.success = 'Receita criada com sucesso'
+            return res.redirect(`/admin/recipes/${recipe}`)
         } catch(error) {
             console.error(error)
             return res.render(`admin/recipes/create`, {
@@ -74,9 +75,13 @@ module.exports = {
     },
     async show(req, res) {
         try {
+            const { error, success  } = req.session
+            req.session.error = ''
+            req.session.success = ''
+
             const recipe =  await LoadRecipeService.load('recipe', req.params.id)
             
-            return res.render('admin/recipes/show', { recipe })
+            return res.render('admin/recipes/show', { recipe, error, success })
         } catch (error) {
             console.error(error)
             return res.render(`admin/recipes/show`, {
@@ -100,7 +105,7 @@ module.exports = {
     },
     async put(req, res) {
         try {
-            let { chef, title, ingredients, preparation, information } = req.body
+            let { chef, title, ingredients, preparation, information, id } = req.body
 
             if(req.files.length != 0) {
                 const newFilesPromise = req.files.map(file => 
@@ -128,8 +133,8 @@ module.exports = {
                     
                 await Promise.all(removedFilesPromise)        
             }
-            
-            await Recipe.update(req.body.id, { 
+            console.log(req.body)
+            await Recipe.update(id, { 
                 chef_id: chef,
                 title,
                 ingredients,
@@ -137,12 +142,8 @@ module.exports = {
                 information
             })     
 
-            const recipes = await LoadRecipeService.load('recipes')
-
-            return res.render(`admin/recipes/index`, {
-                recipes,
-                success: 'Receita atualizada com sucesso'
-            })
+            req.session.success = 'Receita atualizada com sucesso'
+            return res.redirect(`/admin/recipes/${req.body.id}`)
         }catch(error) {
             console.error(error)
             return res.render(`admin/recipes/edit`, {
@@ -162,13 +163,11 @@ module.exports = {
 
             await Recipe.delete(req.body.id) 
 
-            return res.render(`admin/recipes/index`, {
-                success: 'Receita deletada com sucesso'
-            })
+            req.session.success = 'Receita deletada com sucesso'
+            return res.redirect(`/admin/recipes`)
         }catch(error) {
             console.error(error)
             return res.render('admin/recipes/edit', {
-                recipe: req.body,
                 error: 'Algo deu errado'
             })
         }
