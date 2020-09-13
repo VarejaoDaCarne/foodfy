@@ -6,18 +6,20 @@ async function getImages(recipeId) {
   let files = await RecipeFile.find(recipeId)
   files = files.map((file) => ({
     ...file,
-    src: `${file.path.replace('public', '')}`,
+    src: `${file.path.replace('public', '')}`
   }))
 
   return files
 }
 
 async function format(recipe) {
-  const files = await getImages(recipe.id)
-  recipe.img = files[0].src
-  recipe.images = files
+  if(recipe) {
+    const files = await getImages(recipe.id)
+    recipe.img = files[0].src
+    recipe.images = files
 
-  return recipe
+    return recipe
+  }
 }
 
 const LoadService = {
