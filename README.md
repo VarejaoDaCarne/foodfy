@@ -111,7 +111,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 
 #### 📌 Importante
 
-- A senha do usúarios criado com o *seed.js* são **123**
+- A senha de todos os usúarios criados com a *seed.js* é **123**
 
 - Se executar o arquivo *seed.js*, tome cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta *public/imagens* vão ser excluidas. Então, reponha as imagens excluídas com novas. Você encontrará imagens na pasta *public/assets*, copie a que desejar para a pasta *public/imagens* e **renomeie para o mesmo nome da imagem apagada**.
 
