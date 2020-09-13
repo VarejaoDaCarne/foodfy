@@ -5,9 +5,13 @@ const LoadChefService = require('../services/LoadChefService')
 module.exports = {
     async index(req, res) {
         try {
+            const { error, success } = req.session
+            req.session.error = ''
+            req.session.success = ''
+
             const chefs = await LoadChefService.load('chefs')
 
-            return res.render('admin/chefs/index', { chefs })
+            return res.render('admin/chefs/index', { chefs, error, success })
         } catch (error) {
             console.error(error)
             return res.render('admin/chefs/index', {
@@ -40,13 +44,10 @@ module.exports = {
                 })
             )
     
-            await Promise.all(chefPromise)
+            const chef = await Promise.all(chefPromise)
 
-            const chefs = await LoadChefService.load('chefs')
-            return res.render('admin/chefs/index', { 
-                chefs,
-                success: 'Chefe criado com sucesso'
-            })
+            req.session.success = 'Chefe criado com sucesso'
+            return res.redirect(`/admin/chefs/${chef}`)
         } catch(error) {
             console.error(error)
             return res.render('admin/chefs/create', {
@@ -56,11 +57,14 @@ module.exports = {
     },
     async show(req, res) {
         try {
-            const chef = await LoadChefService.load('chef', req.params.id )
+            const { error, success } = req.session
+            req.session.error = ''
+            req.session.success = ''
 
+            const chef = await LoadChefService.load('chef', req.params.id )
             const recipes = await LoadChefService.load('chefRecipes', req.params.id)
 
-            return res.render('admin/chefs/show', { chef , recipes })       
+            return res.render('admin/chefs/show', { chef , recipes, error, success })       
         } catch (error) {
             console.error(error)
             return res.render('admin/chefs/show', {
@@ -107,13 +111,10 @@ module.exports = {
                 await Promise.all(removedFilesPromise)        
             }
             
-            await Chef.update(req.body.id, { name: req.body.name } )
+            await Chef.update(req.body.id, { name: req.body.name })
 
-            const chefs = await LoadChefService.load('chefs')
-            return res.render('admin/chefs/index', { 
-                chefs, 
-                success: 'Chefe atualizado com sucesso'
-            }) 
+            req.session.success = 'Chefe atualizado com sucesso'
+            return res.redirect(`/admin/chefs/${req.body.id}`) 
         }catch(error) {
             console.error(error)
             return res.render('admin/chefs/edit', {
@@ -124,10 +125,9 @@ module.exports = {
     async delete(req, res) {
         try {
             await Chef.delete(req.body.id)
-      
-            return res.render('admin/chefs/index', {
-                success: 'Chefe deletado com sucesso',
-            })
+
+            req.session.success = 'Chefe deletado com sucesso'
+            return res.redirect('/admin/chefs')
         }catch(error) {
             console.error(error)
             return res.render('admin/chefs/edit', {
