@@ -104,9 +104,9 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm start
 	```
 
-#### A aplicação será aberta na porta:5000 - acesse *http://localhost:5000*
+#### A aplicação será aberta na porta:3000 - acesse *http://localhost:3000*
 
-Obs: Tome Cuidado ao excluir as entidades, pois a grande maioria das imagens serão compartilhadas entre si, caso exclua algum chefe, usuário ou receita, reponha uma imagem como padrão no caminho public/images/recipes-and-chefs/, sendo chefs.jpg para chefes e recipes.png para receitas.
+Obs: Se executar o arquivo *seed.js*, cuidado ao excluir chefes ou receitas pois as imagens disponíveis na pasta *public/imagens* vão ser excluidas. Então, reponha as imagens excluídas, caso ao contrário ao rodar o *seed.js* novamente irá faltar imagens podendo quebrar a aplicacão. Você encontrará imagens na pasta *public/assets*, copie a que desejar para a pasta *public/imagens* e renomeie para o mesmo nome da imagem apagada.
 
 ---
 
