@@ -61,14 +61,13 @@
 <div class='item'>
     <h3>Ingredientes</h3>
     <div id='ingredients'>
-        {% if recipe %}
+        {% if recipe.ingredients.length > 0 %}
             {% for ingredient in recipe.ingredients %}
                 <div class='input ingredient'>
                     <input 
                         type='text' 
                         name='ingredients[]' 
                         value='{{ingredient}}'
-                        placeholder='Coloque um ingrediente por campo.'
                     >
                 </div>
             {% endfor %}
@@ -77,6 +76,7 @@
                 <input 
                     type='text' 
                     name='ingredients[]'
+                    value=''
                     placeholder='Coloque um ingrediente por campo.'
                 >
             </div>    
@@ -87,23 +87,23 @@
 
 <div class='item'>
     <h3>Modo de preparo</h3>
-    <div id='preparation'>
-        {% if recipe %}
+    <div id='preparation'> 
+        {% if recipe.preparation.length > 0 %}
             {% for preparation in recipe.preparation %} 
                 <div class='input prepare'>
                     <input
                         type='text' 
                         name='preparation[]' 
                         value='{{preparation}}'
-                        placeholder='Coloque uma instrução por campo.'
                     >
                 </div>
             {% endfor %}
         {% else %}
             <div class='input prepare'>
                 <input
-                    type='input text' 
+                    type='text' 
                     name='preparation[]' 
+                    value=''
                     placeholder='Coloque uma instrução por campo.'
                 >
             </div>
