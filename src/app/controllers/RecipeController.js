@@ -133,7 +133,7 @@ module.exports = {
                     
                 await Promise.all(removedFilesPromise)        
             }
-            console.log(req.body)
+
             await Recipe.update(id, { 
                 chef_id: chef,
                 title,
