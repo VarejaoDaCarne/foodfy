@@ -20,11 +20,7 @@
                     </div>
 
                     <div class='actions'>
-                        {% if not user.is_admin and user.id == userId %}
-                            <a href='/admin/profile/{{user.id}}'>Editar</a>
-                        {% else %}
-                            <a href='/admin/users/{{user.id}}'>Editar</a>
-                        {% endif %}
+                        <a href='/admin/users/{{user.id}}'>Editar</a>
 
                         <form method='POST' action='/admin/users?_method=DELETE' id='form-delete'>
                             <input type='hidden' name='id' value={{user.id}}>
