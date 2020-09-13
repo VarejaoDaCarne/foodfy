@@ -70,7 +70,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	git clone https://github.com/grioos/foodfy
 	```
 
-2. Acesse a pasta do projeto no seu vscode
+2. Acesse a pasta do projeto no seu *vscode*
 
 	```bash
 	cd foodfy
@@ -82,7 +82,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm i
 	```
 
-4. Configure o Banco de dados (PostgreSQL) executando os comandos presente no arquivo database.sql.
+4. Configure o Banco de dados (*PostgreSQL*) executando os comandos presente no arquivo database.sql.
 
 	```bash
 	CREATE TABLE "" (
@@ -92,7 +92,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	);
 	```
 
-5. Execute o arquivo seed.js para popular o banco de dados.
+5. Execute o arquivo *seed.js* para popular o banco de dados.
 
 	```bash
 	node seed.js
@@ -104,7 +104,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm start
 	```
 
-`A aplicação será aberta na porta:5000 - acesse http://localhost:5000`
+#### A aplicação será aberta na porta:5000 - acesse http://localhost:5000
 
 Obs: Tome Cuidado ao excluir as entidades, pois a grande maioria das imagens serão compartilhadas entre si, caso exclua algum chefe, usuário ou receita, reponha uma imagem como padrão no caminho public/images/recipes-and-chefs/, sendo chefs.jpg para chefes e recipes.png para receitas.
 
