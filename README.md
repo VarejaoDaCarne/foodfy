@@ -82,7 +82,7 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 	npm i
 	```
 
-4. Configure o Banco de dados (*PostgreSQL*) executando os comandos presente no arquivo database.sql.
+4. Configure o Banco de dados (*PostgreSQL*) executando os comandos presente no arquivo *database.sql*.
 
 	```bash
 	CREATE TABLE "" (
@@ -110,6 +110,8 @@ Além disto ter um editor para trabalhar com o código como [VSCode](https://cod
 
 
 #### 📌 Importante
+
+- Vá para a pasta *src/config* e configure o arquivo *db.js* **colocando seu usuário e senha** de conexão com o *PostgreSQL*.
 
 - A senha de todos os usúarios criados com a *seed.js* é **123**
 
